@@ -5,7 +5,13 @@ const Home = (props) => {
 
     return (
         <div>
-            <h3>Home</h3>
+            <h3>HERIZ YUSOFF</h3>
+            <p>
+                Aspiring Software Engineer and Frontend Web Developer
+            </p>
+            <p>
+                Currently a final year student at Nanyang Technological University
+            </p>
             <ul>
                 <li><Link to='/project'>Project</Link></li>
                 <li><Link to='/about'>About</Link></li>
