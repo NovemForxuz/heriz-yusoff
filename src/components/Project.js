@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
 
 class Project extends Component {
     state = {
@@ -14,7 +13,7 @@ class Project extends Component {
             { title: "QUIZ", subtitle: "MOBILE DEVELOPMENT", id: 8 }
         ]
     }
-    
+
     render() {
         const { projects } = this.state
         const projectList = projects.length ? (
