@@ -25,16 +25,22 @@ const Home = (props) => {
             <div className='w-11/12 bg-blue-200 pl-[10%] pr-[5%] mx-auto'>
                 <div className='fixed flex w-1/4 h-[100vh] flex-col justify-center items-start'>
                     <div className='pt-[90%]'>
-                        <h3>HERIZ YUSOFF</h3>
-                        <p>
-                            Aspiring Software Engineer and Frontend Web Developer
-                        </p>
-                        <p>
-                            Currently a final year student at Nanyang Technological University
-                        </p>
+                        <div className='mb-[2vh] pt-[5%]'>
+                            <h3 className='header swipe-up'>HERIZ YUSOFF</h3>
+                        </div>
+                        <div className='overflow-hidden block'>
+                            <p className='description'>
+                                Aspiring Software Engineer and Frontend Web Developer
+                            </p>
+                        </div>
+                        <div className='overflow-hidden block'>
+                            <p className='description'>
+                            Currently a Final Year student at Nanyang Technological University
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div className='relative inset-y-0 left-auto right-0 w-[65%] h-[90vh] pt-[5vh] flex flex-col justify-center items-center gap-4'>
+                <div className='relative inset-y-0 left-auto right-0 w-[65%] h-[90vh] pt-[5vh] flex flex-col justify-center items-center gap-4 m-0'>
                     <ul>
                         <li><Link to='/project'>Project</Link></li>
                         <li><Link to='/about'>About</Link></li>
