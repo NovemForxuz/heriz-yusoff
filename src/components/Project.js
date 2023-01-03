@@ -30,7 +30,16 @@ class Project extends Component {
         )
 
         return (
-            <div>
+            <div className='container-2xl h-screen relative'>
+                <div className='absolute inset-y-0 left-0 w-[6%] bg-red-200 flex flex-col pt-[5%] pb-[30px] box-content'>
+                    <div className='text-center mb-[40px] pl-[20px] rotate-[270deg] flex-initial'>
+                        <a className='nav-left-link' href='/'>Home</a>
+                    </div>
+                    <div className='nav-line mx-auto'></div>
+                    <div className='text-center absolute bottom-[10vh] inset-x-0 rotate-[270deg]'>
+                        <div className='copyright'>&copy;/2022</div>
+                    </div>
+                </div>
                 <div>
                     <h4>PROJECTS</h4>
                     <p>This is a showcase of my best work in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.</p>

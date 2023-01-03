@@ -4,7 +4,16 @@ import { Link } from 'react-router-dom'
 const About = (props) => {
 
     return (
-        <div>
+        <div className='container-2xl h-screen relative'>
+                <div className='absolute inset-y-0 left-0 w-[6%] bg-red-200 flex flex-col pt-[5%] pb-[30px] box-content'>
+                    <div className='text-center mb-[40px] pl-[20px] rotate-[270deg] flex-initial'>
+                        <a className='nav-left-link' href='/'>Home</a>
+                    </div>
+                    <div className='nav-line mx-auto'></div>
+                    <div className='text-center absolute bottom-[10vh] inset-x-0 rotate-[270deg]'>
+                        <div className='copyright'>&copy;/2022</div>
+                    </div>
+                </div>
             <h1>About</h1>
             <h3>I'm Heriz. A developer, maker and problem solver.</h3>
             <p>
