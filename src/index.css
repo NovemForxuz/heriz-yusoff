@@ -153,3 +153,7 @@ code {
   border-bottom-color: transparent !important;
   text-decoration: line-through;
 }
+
+.left-section:not(h1) {
+  font-size: 13px;
+}

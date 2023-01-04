@@ -9,7 +9,7 @@ class Contact extends Component {
                 <SideNav type='home' theme='dark' />
 
                 {/* left section */}
-                <div className='fixed left-40 flex w-1/4 h-[100vh] flex-col justify-center items-start left-section'>
+                <div className='fixed left-10 xxs:left-20 md:left-40 flex w-3/4 xs:w-1/2 lg:w-1/4 h-[60vh] md:h-[100vh] flex-col justify-center items-start left-section'>
                     <div className='mb-[2vh]'>
                         <h1 className='text-left my-[2vh]'>Hello.</h1>
                     </div>
