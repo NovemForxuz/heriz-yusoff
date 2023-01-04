@@ -94,7 +94,7 @@ code {
 }
 
 .description a:hover {
-  border-bottom-color: transparent;
+  border-bottom-color: transparent !important;
   text-decoration: line-through;
 }
 
@@ -133,9 +133,23 @@ code {
   text-shadow: 5px 0px black;
 }
 
-.nav-link:hover > .nav-link::before {
-  content: '';
-  background-color: #1a1818;
-  width: 10px;
-  height: fit-content;
+
+/* =========== contact page =========== */
+.contact h1{
+  font-family: 'Roboto Slab', serif;
+  font-size: 14vw;
+  line-height: 1em;
+  font-weight: 300;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+
+.contact .left-section a, .contact .description a{
+  color: #fff7ed;
+  border-bottom: 1px solid #fff7ed;
+}
+
+.contact a:hover {
+  border-bottom-color: transparent !important;
+  text-decoration: line-through;
 }
