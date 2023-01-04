@@ -15,7 +15,7 @@ class Contact extends Component {
                 </div>
                 <h3>Contact</h3>
                 <p>
-                    I can help design and build you next website. Let me know what you need by filling in this quick&nbsp;
+                    I can help design and build your next website. Let me know what you need by filling in this quick&nbsp;
                     <span><a href='https://forms.gle/GUBWa3KSu3Mc5fSa8' target="_blank" rel="noopener noreferrer">website brief</a></span>
                 </p>
                 <span>Email: <a href='mailto:mherizpy@gmail.com'>mherizpy@gmail.com</a></span><br />
