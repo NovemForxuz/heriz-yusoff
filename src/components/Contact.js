@@ -4,8 +4,8 @@ import SideNav from './SideNav'
 class Contact extends Component {
     render() {
         return (
-            <div className='container-2xl h-screen relative bg-orange-50'>
-                {/* Side Nav bar — Home */}
+            <div className='container-2xl h-screen relative bg-[#1a1818] text-orange-50'>
+                {/* Side Nav bar — Contact */}
                 <SideNav type='home' />
 
                 <h3>Contact</h3>

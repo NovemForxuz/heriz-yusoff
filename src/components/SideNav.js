@@ -5,13 +5,13 @@ const SideNav = ({type}) => {
     const nav = type === 'social' ? (
         <>
             <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-                <a className='nav-left-link' href='https://www.linkedin.com/in/heriz-yusoff/' target='_blank'>LI</a>
+                <a className='nav-left-link' href='https://www.linkedin.com/in/heriz-yusoff/' target='_blank' rel="noopener noreferrer">LI</a>
                 </div>
             <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-                <a className='nav-left-link' href='https://twitter.com/LetItRisk' target='_blank'>TW</a>
+                <a className='nav-left-link' href='https://twitter.com/LetItRisk' target='_blank' rel="noopener noreferrer">TW</a>
                 </div>
             <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-                <a className='nav-left-link' href='https://github.com/NovemForxuz' target='_blank'>GH</a>
+                <a className='nav-left-link' href='https://github.com/NovemForxuz' target='_blank' rel="noopener noreferrer">GH</a>
                 </div>
         </>
     ) : (

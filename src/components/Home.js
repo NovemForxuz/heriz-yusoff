@@ -23,7 +23,7 @@ const Home = (props) => {
                         </div>
                         <div className='overflow-hidden block'>
                             <p className='description'>
-                                Currently a Final Year student at <span><a href='https://www.ntu.edu.sg/education/undergraduate-programme/bachelor-of-engineering-in-information-engineering-and-media-iem' target='_blank'>Nanyang Technological University</a></span>
+                                Currently a Final Year student at <span><a href='https://www.ntu.edu.sg/education/undergraduate-programme/bachelor-of-engineering-in-information-engineering-and-media-iem' target='_blank' rel="noopener noreferrer">Nanyang Technological University</a></span>
                             </p>
                         </div>
                     </div>
