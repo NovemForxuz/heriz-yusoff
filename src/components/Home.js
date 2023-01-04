@@ -6,7 +6,7 @@ const Home = (props) => {
 
     }
     return (
-        <div className='container-2xl h-screen relative bg-orange-100'>
+        <div className='container-2xl h-screen relative bg-orange-50'>
             <div className='absolute inset-y-0 left-0 w-[6%] flex flex-col pt-[5%] pb-[30px] box-content'>
                 <div className='text-center mb-[40px] pl-[20px] rotate-[270deg] flex-initial'>
                     <a className='nav-left-link' href='https://www.linkedin.com/in/heriz-yusoff/' target='_blank'>LI</a>

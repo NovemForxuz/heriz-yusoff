@@ -100,7 +100,7 @@ code {
 .nav-link:hover {
   translate: 5px 0%;
   font-style: italic;
-  color: #ffedd5;
+  color: #fff7ed;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   text-shadow: 5px 0px black;
