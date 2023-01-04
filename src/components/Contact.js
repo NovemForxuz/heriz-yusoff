@@ -6,7 +6,7 @@ class Contact extends Component {
         return (
             <div className='container-2xl h-screen relative bg-[#1a1818] text-orange-50 contact'>
                 {/* Side Nav bar — Contact */}
-                <SideNav type='home' color='dark' />
+                <SideNav type='home' theme='dark' />
 
                 {/* left section */}
                 <div className='fixed left-40 flex w-1/4 h-[100vh] flex-col justify-center items-start left-section'>
