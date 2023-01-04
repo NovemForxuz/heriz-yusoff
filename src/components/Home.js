@@ -1,28 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SideNav from './SideNav'
 
 const Home = (props) => {
-    const navLeft = () => {
-
-    }
+    
     return (
         <div className='container-2xl h-screen relative bg-orange-50'>
             {/* Side Nav bar — Home */}
-            <div className='static md:absolute inset-y-0 left-0 w-full md:w-[6%] flex flex-row md:flex-col pt-[5%] md:pb-[30px] box-content items-center z-20'>
-                <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-                    <a className='nav-left-link' href='https://www.linkedin.com/in/heriz-yusoff/' target='_blank'>LI</a>
-                    </div>
-                <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-                    <a className='nav-left-link' href='https://twitter.com/LetItRisk' target='_blank'>TW</a>
-                    </div>
-                <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-                    <a className='nav-left-link' href='https://github.com/NovemForxuz' target='_blank'>GH</a>
-                    </div>
-                <div className='nav-line md:mx-auto'></div>
-                <div className='text-center md:absolute md:bottom-[10vh] md:inset-x-0 md:rotate-[270deg]'>
-                    <div className='copyright'>&copy;/2022</div>
-                </div>
-            </div>
+            <SideNav type='social' />
             
             {/* Content */}
             <div className='w-full lg:w-11/12 pl-[10%] pr-[5%] mx-auto z-10'>

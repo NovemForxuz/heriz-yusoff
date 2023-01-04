@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
+import SideNav from './SideNav'
 
 class Contact extends Component {
     render() {
         return (
-            <div className='container-2xl h-screen relative'>
-                <div className='absolute inset-y-0 left-0 w-[6%] bg-red-200 flex flex-col pt-[5%] pb-[30px] box-content'>
-                    <div className='text-center mb-[40px] pl-[20px] rotate-[270deg] flex-initial'>
-                        <a className='nav-left-link' href='/'>Home</a>
-                    </div>
-                    <div className='nav-line mx-auto'></div>
-                    <div className='text-center absolute bottom-[10vh] inset-x-0 rotate-[270deg]'>
-                        <div className='copyright'>&copy;/2022</div>
-                    </div>
-                </div>
+            <div className='container-2xl h-screen relative bg-orange-50'>
+                {/* Side Nav bar — Home */}
+                <SideNav type='home' />
+
                 <h3>Contact</h3>
                 <p>
                     I can help design and build your next website. Let me know what you need by filling in this quick&nbsp;
