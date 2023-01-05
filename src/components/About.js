@@ -2,10 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SideNav from './SideNav'
 import Heriz from '../heriz-yusoff.png'
+import resume from '../Heriz Yusoff_Resume_Jun22.pdf'
 
 const About = (props) => {
 
     const myQuote = "I'm Heriz. A developer, maker and problem solver."
+
+    const pdfViewer = <object
+            data="https://example.com/test.pdf#page=2"
+            type="application/pdf"
+            width="100%"
+            height="100%"
+        >
+            <a href={resume} target="_blank" rel="noopener noreferrer"><button>My CV</button></a>
+        </object>
 
     return (
         <div className='container-2xl h-full relative bg-orange-50 about'>
@@ -50,7 +60,7 @@ const About = (props) => {
                     <br />
                     Web Development / MongoDb / Agile Methodologies / Collaboration / Design Systems / HTML and CSS / Responsive Web / Photography 
                     </p>
-                    <button>My CV</button>
+                    {pdfViewer}
                     <p className='description-static description-long'>
                     <br />
                     <br />
@@ -64,7 +74,7 @@ const About = (props) => {
                     <span><a href='https://www.linkedin.com/in/limthianyew/' target="_blank" rel="noopener noreferrer">Charles Lim</a></span>,&nbsp;
                     <span><a href='https://www.linkedin.com/in/ljunqian/' target="_blank" rel="noopener noreferrer">Jun Qian</a></span>. THANK YOU.
                     </p>
-                    <button><Link to={'/contact'}>Contact me</Link></button> 
+                    <Link to={'/contact'}><button>Contact me</button></Link>
                 </div>
                                                    
             </div>
