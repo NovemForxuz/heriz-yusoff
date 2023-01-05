@@ -5,9 +5,11 @@ import Heriz from '../heriz-yusoff.png'
 
 const About = (props) => {
 
+    const myQuote = "I'm Heriz. A developer, maker and problem solver."
+
     return (
         <div className='container-2xl h-full relative bg-orange-50 about'>
-            {/* Side Nav bar — Contact */}
+            {/* Side Nav bar — About */}
             <SideNav type='home' theme='light' />
 
             <div className='relative max-w-[90%] mx-auto pr-[5%] pl-[10%]'>
@@ -18,7 +20,7 @@ const About = (props) => {
                     </div>
                     
                     <p className='description-static description-long'>
-                        <span className='quote'>I'm Heriz. A developer, maker and problem solver.</span><br />
+                        <span className='quote' data-title={myQuote}>{myQuote}</span><br />
                     I’ve been designing with computers since the day I first opened Microsoft Paint. The cusp of art and technology has always fascinated me and I've never been afraid to just jump in and give it a go, whether it's Paint, Photoshop, Sketch or CSS.<br /><br />
 
                     Fast forward to 2022 and I’ve tried it all, from Digital Campaign Design and Flash Actionscript to Web Design, Animation, HTML/CSS/Webflow, Product Design and Product Management. Everything I have done, small or big, has been a vital stepping stone for where I am today.<br /><br />
