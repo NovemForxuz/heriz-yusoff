@@ -157,3 +157,91 @@ code {
 .left-section:not(h1) {
   font-size: 13px;
 }
+
+
+/* =========== about page =========== */
+.about .header {
+  position: relative;
+  margin-top: 0px;
+  margin-bottom: 0vh;
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  line-height: 1.75em;
+  font-weight: 500;
+  text-align: left;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.about h1.header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 14vw;
+  line-height: 1em;
+  font-weight: 300;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+
+.description-static {
+  position: relative;
+  display: block;
+  max-width: 90%;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  font-family: 'Monserrat', sans-serif;
+  font-size: 14px;
+  line-height: 1.9em;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.description-static.description-long {
+  max-width: 75%;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.9em;
+  font-weight: 400;
+}
+
+.about .quote {
+  display: block;
+  padding-bottom: 2%;
+  font-family: 'Roboto Slab', serif;
+  font-size: 42px;
+  line-height: 1.3em;
+  font-weight: 300;
+}
+
+button {
+  padding: 10px 60px;
+  margin-top: 40px;
+  border-radius: 50px;
+  background-color: #1a1818;
+  transition: padding 250ms ease-in-out;
+  font-family: 'Roboto Slab', serif;
+  color: #fff7ed;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.about p a{
+  border-bottom: 1px solid #1a1818;
+}
+
+.about a:hover {
+  border-bottom-color: transparent !important;
+  text-decoration: line-through;
+}
+
+.about img {
+  position: absolute;
+  left: auto;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  display: block;
+  width: 50%;
+  margin-top: 10%;
+  margin-right: -50%;
+}

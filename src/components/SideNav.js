@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const SideNav = ({type, theme}) => {
 
@@ -20,16 +21,16 @@ const SideNav = ({type, theme}) => {
         </>
     ) : (
         <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-            <a className='nav-left-link' href='/'  style={myColor}>Home</a>
+            <Link className='nav-left-link' to='/'  style={myColor}>Home</Link>
         </div>
     )
 
     return (
-        <div className='static md:absolute inset-y-0 left-0 w-full md:w-[6%] flex flex-row md:flex-col pt-[5%] md:pb-[30px] box-content items-center z-20'>
+        <div className='static md:fixed inset-y-0 left-0 w-full md:w-[6%] flex flex-row md:flex-col pt-[5%] md:pb-[30px] box-content items-center z-20'>
             {nav}
             <div className='nav-line md:mx-auto' style={myBgColor}></div>
             <div className='text-center md:absolute md:bottom-[10vh] md:inset-x-0 md:rotate-[270deg]'>
-                <div className='copyright'>&copy;/2022</div>
+                <div className='copyright'>&copy;/2023</div>
             </div>
         </div>
     )
