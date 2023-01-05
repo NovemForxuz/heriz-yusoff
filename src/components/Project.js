@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SideNav from './SideNav'
 
 class Project extends Component {
     state = {
@@ -19,9 +20,9 @@ class Project extends Component {
         const projectList = projects.length ? (
             projects.map(project => {
                 return (
-                    <div key={project.id}>
-                        <h2>{project.title}</h2>
-                        <h4>- {project.subtitle}</h4>
+                    <div key={project.id} className="relative block pr-[5%] text-right">
+                        <h2 className='nav-link'>{project.title}</h2>
+                        <h4 className='header header-small'>- {project.subtitle}</h4>
                     </div>
                 )
             })
@@ -30,22 +31,32 @@ class Project extends Component {
         )
 
         return (
-            <div className='container-2xl h-screen relative'>
-                <div className='absolute inset-y-0 left-0 w-[6%] bg-red-200 flex flex-col pt-[5%] pb-[30px] box-content'>
-                    <div className='text-center mb-[40px] pl-[20px] rotate-[270deg] flex-initial'>
-                        <a className='nav-left-link' href='/'>Home</a>
+            <div className='container-2xl h-screen relative  bg-[#1a1818] text-orange-50 project overflow-scroll'>
+                {/* Side Nav bar — Project */}
+                <SideNav type='home' theme='dark' />
+
+                {/* content */}
+                <div className='relative max-w-[90%] mx-auto pr-[5%] pl-[10%]'>
+                    <div className='fixed flex w-1/4 h-[100vh] flex-col justify-center items-start'>
+                        <div className='ml-[-10%] pt-[90%]'>
+                            <div className='mb-[2vh] pt-[5%] overflow-hidden'>
+                                <h1 className='header swipe-up'>PROJECT</h1>
+                            </div>
+                            <div className='block overflow-hidden'>
+                                <p className='description'>This is a showcase of my best project in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.</p>
+                            </div>
+                            <div className='block overflow-hidden'>
+                                <p className='description'>The world of Web Technologies has grown at an extremely rapid rate over the last 10 years and my aim has been to evolve with it. I’m learning and gaining new skills every day.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className='nav-line mx-auto'></div>
-                    <div className='text-center absolute bottom-[10vh] inset-x-0 rotate-[270deg]'>
-                        <div className='copyright'>&copy;/2022</div>
+                    <div className='section-right section-long'>
+                        <div className='pt-[10%] pl-[6%] text-left'>
+                            {projectList}
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h4>PROJECTS</h4>
-                    <p>This is a showcase of my best work in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.</p>
-                    <p>The world of Web Technologies has grown at an extremely rapid rate over the last 10 years and my aim has been to evolve with it. I’m learning and gaining new skills every day.</p>
-                </div>
-                {projectList}
+                
             </div>
         )
     }
