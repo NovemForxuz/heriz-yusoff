@@ -15,7 +15,7 @@ code {
 @tailwind utilities;
 
 * {
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   box-sizing: border-box;
 }
 

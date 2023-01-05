@@ -11,10 +11,10 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Routes>
-            <Route exact path='/' element={<Home />}></Route>
-            <Route path='/project' element={<Project />}></Route>
-            <Route path='/about' element={<About />}></Route>
-            <Route path='/contact' element={<Contact />}></Route>
+            <Route exact path='/heriz-yusoff/' element={<Home />}></Route>
+            <Route path='/heriz-yusoff/project' element={<Project />}></Route>
+            <Route path='/heriz-yusoff/about' element={<About />}></Route>
+            <Route path='/heriz-yusoff/contact' element={<Contact />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

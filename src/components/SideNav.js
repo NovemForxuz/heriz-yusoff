@@ -21,7 +21,7 @@ const SideNav = ({type, theme}) => {
         </>
     ) : (
         <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-            <Link className='nav-left-link' to='/'  style={myColor}>Home</Link>
+            <Link className='nav-left-link' to='/heriz-yusoff/'  style={myColor}>Home</Link>
         </div>
     )
 

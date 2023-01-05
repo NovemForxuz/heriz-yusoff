@@ -74,7 +74,7 @@ const About = (props) => {
                     <span><a href='https://www.linkedin.com/in/limthianyew/' target="_blank" rel="noopener noreferrer">Charles Lim</a></span>,&nbsp;
                     <span><a href='https://www.linkedin.com/in/ljunqian/' target="_blank" rel="noopener noreferrer">Jun Qian</a></span>. THANK YOU.
                     </p>
-                    <Link to={'/contact'}><button>Contact me</button></Link>
+                    <Link to={'/heriz-yusoff/contact'}><button>Contact me</button></Link>
                 </div>
                                                    
             </div>
