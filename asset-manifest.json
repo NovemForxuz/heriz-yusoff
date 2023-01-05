@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/heriz-yusoff/static/css/main.66348423.css",
+    "main.js": "/heriz-yusoff/static/js/main.e6a5a022.js",
+    "static/media/heriz-yusoff.png": "/heriz-yusoff/static/media/heriz-yusoff.02198d9e603b705e06d8.png",
+    "static/media/Heriz Yusoff_Resume_Jun22.pdf": "/heriz-yusoff/static/media/Heriz Yusoff_Resume_Jun22.fb8de7eb1558354d06db.pdf",
+    "index.html": "/heriz-yusoff/index.html",
+    "main.66348423.css.map": "/heriz-yusoff/static/css/main.66348423.css.map",
+    "main.e6a5a022.js.map": "/heriz-yusoff/static/js/main.e6a5a022.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.66348423.css",
+    "static/js/main.e6a5a022.js"
+  ]
+}
