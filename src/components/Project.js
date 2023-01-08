@@ -36,9 +36,9 @@ class Project extends Component {
                 <SideNav type='home' theme='dark' />
 
                 {/* content */}
-                <div className='relative max-w-[90%] mx-auto pr-[5%] pl-[10%]'>
-                    <div className='fixed flex w-1/4 h-[100vh] flex-col justify-center items-start'>
-                        <div className='ml-[-10%] pt-[90%]'>
+                <div className='relative h-screen max-w-[90%] mx-auto pr-[5%] pl-[10%]'>
+                    <div className='sticky top-0 md:fixed flex w-full md:w-1/4 h-max md:h-[100vh] flex-col justify-center items-start bg-[#1a1818] z-10 shadow-[0_15px_10px_0_rgba(26,24,24,0.99)]'>
+                        <div className='ml-[-10%] pt-[10%] md:pt-[90%]'>
                             <div className='mb-[2vh] pt-[5%] overflow-hidden'>
                                 <h1 className='header swipe-up'>PROJECT</h1>
                             </div>
@@ -51,7 +51,7 @@ class Project extends Component {
                         </div>
                     </div>
                     <div className='section-right section-long'>
-                        <div className='pt-[10%] pl-[6%] text-left'>
+                        <div className='pt-[5%] md:pt-[10%] md:pl-[6%] text-left'>
                             {projectList}
                         </div>
                     </div>
