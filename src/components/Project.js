@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import SideNav from './SideNav'
 
 class Project extends Component {
@@ -13,6 +13,10 @@ class Project extends Component {
             { title: "VMS", subtitle: "MOBILE DEVELOPMENT", id: 7 },
             { title: "QUIZ", subtitle: "MOBILE DEVELOPMENT", id: 8 }
         ]
+    }
+
+    componentDidMount(){
+        document.title = "Heriz Yusoff – Project"
     }
 
     render() {
@@ -38,7 +42,7 @@ class Project extends Component {
                 {/* content */}
                 <div className='relative h-screen max-w-[90%] mx-auto pr-[5%] pl-[10%]'>
                     <div className='sticky top-0 md:fixed flex w-full md:w-1/4 h-max md:h-[100vh] flex-col justify-center items-start bg-[#1a1818] z-10 shadow-[0_15px_10px_0_rgba(26,24,24,0.99)]'>
-                        <div className='ml-[-10%] pt-[10%] md:pt-[90%]'>
+                        <div className='ml-[-10%] py-[10%] md:pt-[90%] '>
                             <div className='mb-[2vh] pt-[5%] overflow-hidden'>
                                 <h1 className='header swipe-up'>PROJECT</h1>
                             </div>

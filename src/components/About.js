@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SideNav from './SideNav'
 import Heriz from '../heriz-yusoff.png'
 import resume from '../Heriz Yusoff_Resume_Jun22.pdf'
 
 const About = (props) => {
+    useEffect(() => {
+        document.title = "Heriz Yusoff – About"
+    }, [])
 
     const myQuote = "I'm Heriz. A developer, maker and problem solver."
 

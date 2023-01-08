@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import SideNav from './SideNav'
 
 class Contact extends Component {
+    componentDidMount(){
+        document.title = "Heriz Yusoff – Contact"
+    }
     render() {
         const creativeBriefForm = 'https://forms.gle/GUBWa3KSu3Mc5fSa8'
         return (
