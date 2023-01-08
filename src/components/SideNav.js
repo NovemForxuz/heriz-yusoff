@@ -13,9 +13,6 @@ const SideNav = ({type, theme}) => {
                 <a className='nav-left-link' href='https://www.linkedin.com/in/heriz-yusoff/' target='_blank' rel="noopener noreferrer"  style={myColor}>LI</a>
                 </div>
             <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
-                <a className='nav-left-link' href='https://twitter.com/LetItRisk' target='_blank' rel="noopener noreferrer"  style={myColor}>TW</a>
-                </div>
-            <div className='text-center md:mb-[40px] pl-[20px] md:rotate-[270deg] flex-initial'>
                 <a className='nav-left-link' href='https://github.com/NovemForxuz' target='_blank' rel="noopener noreferrer"  style={myColor}>GH</a>
                 </div>
         </>
