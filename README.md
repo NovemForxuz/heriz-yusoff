@@ -18,7 +18,7 @@ This is hosted on <a href='https://pages.github.com/'>Github pages</a>.
 </div>
 
 ---
-| <div style="display: inline-block;width:500px"> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Frontend-developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div> | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [LI](https://www.linkedin.com/in/heriz-yusoff/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [GH](https://github.com/NovemForxuz) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+| <div style="display: inline-block;width:500px"> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  Frontend-developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div> | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [LI](https://www.linkedin.com/in/heriz-yusoff/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [GH](https://github.com/NovemForxuz) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
 <br>
 
