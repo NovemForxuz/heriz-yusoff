@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+<summary align="center"><h1 style="display: inline-block;">Hello, I'm Heriz👋</h1></summary>
+<p align="center"><a href='https://novemforxuz.github.io/heriz-yusoff/'>Check my TECHFOLIO!</a></p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
 
-## Available Scripts
+## A showcase of my best projects
+#### "Top work from various projects, be it coursework, personal, or work."
+This techfolio allowed me to be inspired by designs that adds personality into my work. It has been an enjoyable experience to try something new like *Tailwind css* to bring the designs to life! 
 
-In the project directory, you can run:
+<div align="right">
+<h2>Techies</h2>
 
-### `npm start`
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+<br>
+This was created using <strong><a href="https://reactjs.org/">React</a></strong> and 
+<strong><a href="https://tailwindcss.com/">TailwindCSS</a></strong>.<br>
+This is hosted on <a href='https://pages.github.com/'>Github pages</a>.
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
+| <div style="display: inline-block;width:500px"> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Frontend-developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div> | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [LI](https://www.linkedin.com/in/heriz-yusoff/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [GH](https://github.com/NovemForxuz) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## [![](https://visitcount.itsvg.in/api?id=novemforxuz&label=Techfolio%20Views&color=7&icon=5&pretty=false)](https://visitcount.itsvg.in)
 
-### `npm test`
+![home-pg](https://user-images.githubusercontent.com/30825204/211875974-7cde4a5a-d0b5-4414-a433-8b92e02cb33f.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![project-pg](https://user-images.githubusercontent.com/30825204/211877949-b8f94fd8-a8d9-4461-bf3a-c497f6f792df.png)
 
-### `npm run build`
+![about-pg](https://user-images.githubusercontent.com/30825204/211877937-4c77356b-a618-4b0d-a557-053a8ca2031b.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![contact-pg](https://user-images.githubusercontent.com/30825204/211877101-120e739c-43f5-4919-aa1f-b8011d45d063.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
+This techfolio was inspired by [Lauren Waller](https://www.lauren-waller.com).
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
