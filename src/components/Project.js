@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component } from 'react'
 import SideNav from './SideNav'
 
 class Project extends Component {
@@ -9,10 +9,17 @@ class Project extends Component {
             { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 3 },
             { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 4 },
             { title: "MOVIE BOOKING", subtitle: "FULLSTACK WEB DEVELOPMENT", id: 5 },
-            { title: "SUDOKU", subtitle: "GAME DEVELOPMENT", id: 6 },
-            { title: "VMS", subtitle: "MOBILE DEVELOPMENT", id: 7 },
-            { title: "QUIZ", subtitle: "MOBILE DEVELOPMENT", id: 8 }
-        ]
+            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 6 }
+        ],
+        links: {
+            1: '',
+            2: 'https://github.com/NovemForxuz/heriz-yusoff',
+            3: 'https://github.com/ljunqian/Float',
+            4: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
+            5: 'https://github.com/NovemForxuz/Cinema-Booking',
+            6: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
+        }
+        
     }
 
     componentDidMount(){
@@ -20,15 +27,25 @@ class Project extends Component {
     }
 
     render() {
-        const { projects } = this.state
+        const { projects, links } = this.state
         const projectList = projects.length ? (
             projects.map(project => {
-                return (
-                    <div key={project.id} className="relative block pr-[5%] text-right">
-                        <h2 className='nav-link'>{project.title}</h2>
-                        <h4 className='header header-small'>- {project.subtitle}</h4>
-                    </div>
-                )
+                if (project.id === 1) {
+                    return (
+                        <div key={project.id} className="relative block pr-[5%] text-right">
+                            <h2 className='nav-link'><a href={links[project.id]}>{project.title}</a></h2>
+                            <h4 className='header header-small'>- {project.subtitle}</h4>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div key={project.id} className="relative block pr-[5%] text-right">
+                            <h2 className='nav-link'><a href={links[project.id]} target='_blank' rel="noreferrer">{project.title}</a></h2>
+                            <h4 className='header header-small'>- {project.subtitle}</h4>
+                        </div>
+                    )
+                }
+                
             })
         ) : (
             <div>There are no projects to display</div>
