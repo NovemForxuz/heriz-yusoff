@@ -336,7 +336,7 @@ button:hover {
 }
 
 .project .nav-link {
-  font-size: clamp(30px,5vw,60px);
+  font-size: clamp(30px,8vw,85px);
   color: #fff7ed;
   background-color: #1a1818;
   padding-bottom: 3vh;
@@ -357,5 +357,5 @@ button:hover {
   color: #1a1818;
   -webkit-text-stroke-width: 0.25px;
   -webkit-text-stroke-color: #fff7ed;
-  text-shadow: .25px 0px #fff7ed;
+  text-shadow: .5px 0px #fff7ed;
 }
