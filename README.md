@@ -23,7 +23,7 @@ This project was deployed using <a href='https://pages.github.com/'>Github pages
 <br><br>
 
 ## Reach out to me!
-<div align="center"><h4> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; Frontend Developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <a href="https://www.linkedin.com/in/heriz-yusoff/"> LinkedIn: Heriz-yusoff</a>
+<div align="center"><h4> &nbsp; &nbsp;  &nbsp; &nbsp; Frontend Developer &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://www.linkedin.com/in/heriz-yusoff/"> LinkedIn: Heriz-yusoff</a>
   </h4></div>
 
 
