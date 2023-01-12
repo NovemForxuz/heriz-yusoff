@@ -1,6 +1,5 @@
 
 <div align="center">
-  <img src="/public/favicon.ico" alt="Deploy Now logo" style="width:200px">
   <a href="https://www.ionos.com/hosting/deploy-now"><h2>Hello, I'm Heriz</h2></a>
   <p align="center"><a href='https://novemforxuz.github.io/heriz-yusoff/'>Check my TECHFOLIO!</a></p>
 </div>
