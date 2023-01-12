@@ -22,10 +22,15 @@ This is hosted on <a href='https://pages.github.com/'>Github pages</a>.
 This project was deployed using <a href='https://pages.github.com/'>Github pages</a>. React Static was used to serve static pages while still performing similar to a Single-Page Application.
 <br><br>
 
----
+## Reach out to me
+#### Frontend Developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [LinkedIn](https://www.linkedin.com/in/heriz-yusoff/)
+
+
+<!--
 | <div style="display: inline-block;width:500px"> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  Frontend-developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div> | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [LI](https://www.linkedin.com/in/heriz-yusoff/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [GH](https://github.com/NovemForxuz) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
 <br>
+-->
 
 ## [![](https://visitcount.itsvg.in/api?id=novemforxuz&label=Techfolio%20Views&color=7&icon=5&pretty=false)](https://visitcount.itsvg.in)
 
