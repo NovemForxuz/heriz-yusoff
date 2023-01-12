@@ -22,8 +22,8 @@ This is hosted on <a href='https://pages.github.com/'>Github pages</a>.
 This project was deployed using <a href='https://pages.github.com/'>Github pages</a>. React Static was used to serve static pages while still performing similar to a Single-Page Application.
 <br><br>
 
-## Reach out to me
-#### Frontend Developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [LinkedIn](https://www.linkedin.com/in/heriz-yusoff/)
+## Reach out to me!
+#### Frontend Developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [LinkedIn: Heriz-yusoff](https://www.linkedin.com/in/heriz-yusoff/)
 
 
 <!--
