@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SideNav from './SideNav'
 
 const Home = (props) => {
-    
+    useEffect(() => {
+        document.title = "Heriz Yusoff"
+    }, [])
     return (
         <div className='container-2xl h-screen relative bg-orange-50'>
             {/* Side Nav bar — Home */}
