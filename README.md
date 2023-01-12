@@ -18,6 +18,10 @@ This was created using <strong><a href="https://reactjs.org/">React</a></strong>
 This is hosted on <a href='https://pages.github.com/'>Github pages</a>.
 </div>
 
+## Deployment
+This project was deployed using <a href='https://pages.github.com/'>Github pages</a>. React Static was used to serve static pages while still performing similar to a Single-Page Application.
+<br><br>
+
 ---
 | <div style="display: inline-block;width:500px"> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  Frontend-developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div> | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [LI](https://www.linkedin.com/in/heriz-yusoff/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [GH](https://github.com/NovemForxuz) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
