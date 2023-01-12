@@ -56,7 +56,7 @@ const About = (props) => {
                     Relevant experiences:<br />
                     <br />
                     - Experience in Fullstack Web Development<br />
-                    - Experience in mobile development (Android)<br />
+                    - Experience in Mobile Development (Android)<br />
                     <br />
                     <br />
                     <span className='header'>Skills</span><br />
