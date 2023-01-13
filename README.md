@@ -1,13 +1,14 @@
-<summary align="center"><h1 style="display: inline-block;">Hello, I'm Heriz👋</h1></summary>
-<p align="center"><a href='https://novemforxuz.github.io/heriz-yusoff/'>Check my TECHFOLIO!</a></p>
 
-<br>
+<div align="center">
+  <a href="https://www.ionos.com/hosting/deploy-now"><h2>Hello, I'm Heriz</h2></a>
+  <p align="center"><a href='https://novemforxuz.github.io/heriz-yusoff/'>Check my TECHFOLIO!</a></p>
+</div>
 
-## A showcase of my best projects
-#### "Top work from various projects, be it coursework, personal, or work."
-This techfolio allowed me to be inspired by designs that adds personality into my work. It has been an enjoyable experience to try something new like *Tailwind css* to bring the designs to life! 
+## Introduction
+TECHFOLIO is a showcase of my best work from various projects, be it coursework, personal, or work.
+I'm greatly inspired with techfolio that uses designs that adds personality into the developer/designers work. It has been an enjoyable experience to try something new like <a href="https://tailwindcss.com/">Tailwind CSS</a> to bring the designs to life! 
 
-<div align="right">
+<div align="left">
 <h2>Techies</h2>
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -17,10 +18,20 @@ This was created using <strong><a href="https://reactjs.org/">React</a></strong>
 This is hosted on <a href='https://pages.github.com/'>Github pages</a>.
 </div>
 
----
+## Deployment
+This project was deployed using <a href='https://pages.github.com/'>Github pages</a>. React Static was used to serve static pages while still performing similar to a Single-Page Application.
+<br><br>
+
+## Reach out to me!
+<div align="center"><h4> &nbsp; &nbsp;  &nbsp; &nbsp; Frontend Developer &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://www.linkedin.com/in/heriz-yusoff/"> LinkedIn: Heriz-yusoff</a>
+  </h4></div>
+
+
+<!--
 | <div style="display: inline-block;width:500px"> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  Frontend-developer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div> | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  [LI](https://www.linkedin.com/in/heriz-yusoff/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [GH](https://github.com/NovemForxuz) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
 <br>
+-->
 
 ## [![](https://visitcount.itsvg.in/api?id=novemforxuz&label=Techfolio%20Views&color=7&icon=5&pretty=false)](https://visitcount.itsvg.in)
 
