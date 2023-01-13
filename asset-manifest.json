@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/heriz-yusoff/static/css/main.b631429e.css",
-    "main.js": "/heriz-yusoff/static/js/main.d7709bcc.js",
+    "main.js": "/heriz-yusoff/static/js/main.00b82a8a.js",
     "static/media/heriz-yusoff.png": "/heriz-yusoff/static/media/heriz-yusoff.02198d9e603b705e06d8.png",
     "static/media/Heriz Yusoff_Resume_Jun22.pdf": "/heriz-yusoff/static/media/Heriz Yusoff_Resume_Jun22.fb8de7eb1558354d06db.pdf",
     "index.html": "/heriz-yusoff/index.html",
     "main.b631429e.css.map": "/heriz-yusoff/static/css/main.b631429e.css.map",
-    "main.d7709bcc.js.map": "/heriz-yusoff/static/js/main.d7709bcc.js.map"
+    "main.00b82a8a.js.map": "/heriz-yusoff/static/js/main.00b82a8a.js.map"
   },
   "entrypoints": [
     "static/css/main.b631429e.css",
-    "static/js/main.d7709bcc.js"
+    "static/js/main.00b82a8a.js"
   ]
 }
