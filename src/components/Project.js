@@ -5,7 +5,7 @@ class Project extends Component {
     state = {
         projects: [
             { title: "RISE PROJECT", subtitle: "WEB DEVELOPMENT", id: 1 },
-            { title: "WEB PORTFOLIO", subtitle: "REACT DEVELOPMENT", id: 2 },
+            { title: "TECHFOLIO", subtitle: "REACT DEVELOPMENT", id: 2 },
             { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 3 },
             { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 4 },
             { title: "MOVIE BOOKING", subtitle: "FULLSTACK WEB DEVELOPMENT", id: 5 },
@@ -18,6 +18,11 @@ class Project extends Component {
             4: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
             5: 'https://github.com/NovemForxuz/Cinema-Booking',
             6: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
+        },
+        default: {
+            title: 'PROJECT',
+            desc1: 'This is a showcase of my best project in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.',
+            desc2: 'The world of Web Technologies has grown at an extremely rapid rate over the last 10 years and my aim has been to evolve with it. I’m learning and gaining new skills every day.'
         }
         
     }
@@ -26,7 +31,22 @@ class Project extends Component {
         document.title = "Heriz Yusoff – Project"
     }
 
+    handleClick = (event) => {
+        const nodeTitle = event.target.innerText
+        if (event.target.nodeName === 'H2') {
+            document.getElementById('title').innerText = nodeTitle
+        } else {
+            document.getElementById('title').innerText = this.state.default.title
+            document.getElementById('desc1').innerText = this.state.default.desc1
+            document.getElementById('desc2').innerText = this.state.default.desc2
+        }
+        
+        console.log(event.target.innerText)
+        console.log(this.state)
+    }
+
     render() {
+        
         const { projects, links } = this.state
         const projectList = projects.length ? (
             projects.map(project => {
@@ -57,23 +77,24 @@ class Project extends Component {
                 <SideNav type='home' theme='dark' />
 
                 {/* content */}
-                <div className='relative h-screen max-w-[90%] mx-auto pr-[5%] pl-[10%]'>
+                <div className='relative h-screen max-w-[90%] mx-auto pr-[5%] pl-[10%]' onClick={event => this.handleClick(event)}> 
                     <div className='sticky top-0 md:fixed flex w-full md:w-1/4 h-max md:h-[100vh] flex-col justify-center items-start bg-[#1a1818] z-10 shadow-[0_15px_10px_0_rgba(26,24,24,0.99)]'>
-                        <div className='ml-[-10%] py-[10%] md:pt-[90%] '>
+                        <div className='ml-[-10%] py-[10%] md:pt-[90%]' id='section-wrapper'>
                             <div className='mb-[2vh] pt-[5%] overflow-hidden'>
-                                <h1 className='header swipe-up'>PROJECT</h1>
+                                <h1 className='header swipe-up' id='title'>PROJECT</h1>
                             </div>
                             <div className='block overflow-hidden'>
-                                <p className='description'>This is a showcase of my best project in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.</p>
+                                <p className='description' id='desc1'>This is a showcase of my best project in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.</p>
                             </div>
                             <div className='block overflow-hidden'>
-                                <p className='description'>The world of Web Technologies has grown at an extremely rapid rate over the last 10 years and my aim has been to evolve with it. I’m learning and gaining new skills every day.</p>
+                                <p className='description' id='desc2'>The world of Web Technologies has grown at an extremely rapid rate over the last 10 years and my aim has been to evolve with it. I’m learning and gaining new skills every day.</p>
                             </div>
                         </div>
                     </div>
                     <div className='section-right section-long'>
                         <div className='pt-[5%] md:pt-[10%] md:pl-[6%] text-left'>
                             {projectList}
+                            <br />
                         </div>
                     </div>
                 </div>
