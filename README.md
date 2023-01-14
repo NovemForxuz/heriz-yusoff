@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://www.ionos.com/hosting/deploy-now"><h2>Hello, I'm Heriz</h2></a>
-  <p align="center"><a href='https://novemforxuz.github.io/heriz-yusoff/'>Check my TECHFOLIO!</a></p>
+  <p align="center"><a href='https://heriz-yusoff.vercel.app/'>Check my TECHFOLIO!</a></p>
 </div>
 
 ## Introduction
@@ -15,11 +15,10 @@ I'm greatly inspired with techfolio that uses designs that adds personality into
 <br>
 This was created using <strong><a href="https://reactjs.org/">React</a></strong> and 
 <strong><a href="https://tailwindcss.com/">TailwindCSS</a></strong>.<br>
-This is hosted on <a href='https://pages.github.com/'>Github pages</a>.
 </div>
 
 ## Deployment
-This project was deployed using <a href='https://pages.github.com/'>Github pages</a>. React Static was used to serve static pages while still performing similar to a Single-Page Application.
+This project was deployed using <a href='https://vercel.com/'>Vercel</a>.
 <br><br>
 
 ## Reach out to me!
