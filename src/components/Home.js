@@ -9,7 +9,7 @@ const Home = (props) => {
         document.title = "Heriz Yusoff"
 
         const interval = setInterval(() => {
-            animateCSS('#project', 'bounce')
+            animateCSS('#project', 'pulse')
         }, 5000)
 
         return () => clearInterval(interval)        // similar to componentWillUnmount; prevent memory leak

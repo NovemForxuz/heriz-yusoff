@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SideNav from './SideNav'
+import animateCSS from './Animation'
 
 class Project extends Component {
     state = {
@@ -22,11 +23,22 @@ class Project extends Component {
             desc1: 'This is a showcase of my best project in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.',
             desc2: 'The world of Web Technologies has grown at an extremely rapid rate over the last 10 years and my aim has been to evolve with it. I’m learning and gaining new skills every day.'
         }
-        
     }
 
     componentDidMount(){
         document.title = "Heriz Yusoff – Project"
+
+        const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+
+        this.interval = setInterval(() => {
+            const randomPrj = '#prj' + getRandomInt(1, 6)
+            animateCSS(randomPrj, 'pulse')
+            console.log('interval every 5s');
+        }, 5000)
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.interval)
     }
 
     handleClick = (event) => {
@@ -48,22 +60,13 @@ class Project extends Component {
         const { projects, links } = this.state
         const projectList = projects.length ? (
             projects.map(project => {
-                if (project.id === 1) {
-                    return (
-                        <div key={project.id} className="relative block pr-[5%] text-right">
-                            <h2 className='nav-link'><a href={links[project.id]}>{project.title}</a></h2>
-                            <h4 className='header header-small'>- {project.subtitle}</h4>
-                        </div>
-                    )
-                } else {
-                    return (
-                        <div key={project.id} className="relative block pr-[5%] text-right">
-                            <h2 className='nav-link'><a href={links[project.id]} target='_blank' rel="noreferrer">{project.title}</a></h2>
-                            <h4 className='header header-small'>- {project.subtitle}</h4>
-                        </div>
-                    )
-                }
-                
+                const idName = 'prj' + project.id
+                return (
+                    <div key={project.id} id={idName} className="relative block pr-[5%] text-right">
+                        <h2 className='nav-link'><a href={links[project.id]} target='_blank' rel="noreferrer">{project.title}</a></h2>
+                        <h4 className='header header-small'>- {project.subtitle}</h4>
+                    </div>
+                )
             })
         ) : (
             <div>There are no projects to display</div>
