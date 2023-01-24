@@ -7,9 +7,15 @@ import animateCSS from './Animation'
 const Home = (props) => {
     useEffect(() => {
         document.title = "Heriz Yusoff"
+
+        const interval = setInterval(() => {
+            animateCSS('#project', 'bounce')
+        }, 5000)
+
+        return () => clearInterval(interval)        // similar to componentWillUnmount; prevent memory leak
     }, [])
 
-    animateCSS('Link#project', 'bounce')
+    
     return (
         <div className='container-2xl h-screen relative bg-orange-50'>
             <div className='fixed background bg-dark animate__animated animate__slideOutDown animate__delay-500ms animate__faster'></div>
