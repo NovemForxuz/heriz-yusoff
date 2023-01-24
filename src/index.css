@@ -19,6 +19,15 @@ code {
   box-sizing: border-box;
 }
 
+.background.bg-dark {
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a1818;
+  box-shadow: 0px 100vh 0px 0px rgba(26,24,24,1) inset;
+-webkit-box-shadow: 0px 100vh 0px 0px rgba(26,24,24,1) inset;
+-moz-box-shadow: 0px 100vh 0px 0px rgba(26,24,24,1) inset;
+}
+
 /* =========== home page =========== */
 .nav-left-link {
   display: block;
@@ -60,6 +69,7 @@ code {
   text-align: center;
   letter-spacing: 4px;
   padding-right: 20px;
+  color: #1a1818;
 }
 
 .header.swipe-up {
@@ -78,12 +88,12 @@ code {
   font-size: 13px;
   line-height: 1.9em;
   font-weight: 400;
+  color: #1a1818;
 }
 
 .description a {
   border-bottom: 2px solid #000;
   transition: border-color 250ms ease;
-  color: #000;
   text-decoration: none;
 }
 
@@ -360,4 +370,35 @@ button:hover {
 
 #section-wrapper {
   transition: all 300ms ease-in-out;
+}
+
+
+/* =========== Animate =========== */
+.animate__delay-half {
+  -webkit-animation-delay: calc(1s * .5);
+  animation-delay: calc(1s * .5);
+  -webkit-animation-delay: calc(var(--animate-delay) * .5);
+  animation-delay: calc(var(--animate-delay) * .5);
+}
+
+.animate__delay-3quarter {
+  -webkit-animation-delay: calc(1s * .75);
+  animation-delay: calc(1s * .75);
+  -webkit-animation-delay: calc(var(--animate-delay) * .75);
+  animation-delay: calc(var(--animate-delay) * .75);
+}
+
+.animate__blurIn {
+  animation-duration: 1s;
+  animation-name: blurIn;
+}
+
+@keyframes blurIn {
+  from {
+    filter: blur(1.5rem);
+  }
+
+  to {
+    filter: blur(0);
+  }
 }
