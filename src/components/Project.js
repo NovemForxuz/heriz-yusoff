@@ -4,20 +4,18 @@ import SideNav from './SideNav'
 class Project extends Component {
     state = {
         projects: [
-            { title: "RISE PROJECT", subtitle: "WEB DEVELOPMENT", id: 1 },
-            { title: "TECHFOLIO", subtitle: "REACT DEVELOPMENT", id: 2 },
-            { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 3 },
-            { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 4 },
-            { title: "MOVIE BOOKING", subtitle: "FULLSTACK WEB DEVELOPMENT", id: 5 },
-            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 6 }
+            { title: "TECHFOLIO", subtitle: "REACT DEVELOPMENT", id: 1 },
+            { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 2 },
+            { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 3 },
+            { title: "MOVIE BOOKING", subtitle: "FULLSTACK WEB DEVELOPMENT", id: 4 },
+            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 5 }
         ],
         links: {
-            1: '',
-            2: 'https://github.com/NovemForxuz/heriz-yusoff',
-            3: 'https://github.com/ljunqian/Float',
-            4: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
-            5: 'https://github.com/NovemForxuz/Cinema-Booking',
-            6: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
+            1: 'https://github.com/NovemForxuz/heriz-yusoff',
+            2: 'https://github.com/ljunqian/Float',
+            3: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
+            4: 'https://github.com/NovemForxuz/Cinema-Booking',
+            5: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
         },
         default: {
             title: 'PROJECT',
