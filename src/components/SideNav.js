@@ -5,7 +5,7 @@ const SideNav = ({type, theme}) => {
 
     const color = theme === 'dark' ? ('#fff7ed') : ('#1a1818')
     const myColor = { color }
-    const myBgColor = { backgroundColor: color }
+    const myLineColor = { backgroundColor: color }
     
     const nav = type === 'social' ? (
         <>
@@ -23,9 +23,9 @@ const SideNav = ({type, theme}) => {
     )
 
     return (
-        <div className='static md:fixed inset-y-0 left-0 w-full md:w-[6%] flex flex-row md:flex-col pt-[5%] md:pb-[30px] box-content items-center z-20'>
+        <div className='relative md:fixed top-0 md:inset-y-0 md:left-0 w-full md:w-[6%] flex flex-row md:flex-col pt-[5%] md:pb-[30px] box-content items-center z-20'>
             {nav}
-            <div className='nav-line md:mx-auto' style={myBgColor}></div>
+            <div className='nav-line md:mx-auto' style={myLineColor}></div>
             <div className='text-center md:absolute md:bottom-[10vh] md:inset-x-0 md:rotate-[270deg]'>
                 <div className='copyright' style={myColor}>&copy;/2023</div>
             </div>

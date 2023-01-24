@@ -36,7 +36,7 @@ const Home = (props) => {
                     </div>
                 </div>
                 <div className='static lg:relative inset-y-0 left-auto right-0 w-full lg:w-[65%] h-[90vh] pt-[35vh] sm:pt-[23vh] md:pt-[40vh] lg:pt-[15vh] lg:flex flex-col justify-center items-center gap-4 lg:float-right'>
-                    <ul className='pt-[10%] lg:pl-[6%] text-left animate__blurIn animate__delay-3quarter'>
+                    <ul className='pt-[10%] lg:pl-[6%] text-left animate__animated animate__blurIn animate__delay-750ms'>
                         <li className='relative inline-block pr-[5%] text-right'>
                             <Link className='nav-link' to='/project'>Project</Link></li>
                         <li className='relative inline-block pr-[5%] text-right'>
