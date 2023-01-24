@@ -70,29 +70,36 @@ class Project extends Component {
         )
 
         return (
-            <div className='container-2xl h-screen relative  bg-[#1a1818] text-orange-50 project overflow-scroll'>
+            <div className='container-2xl h-screen relative  bg-orange-50 text-orange-50 project overflow-scroll'>
+                
+                <div className='fixed background bg-dark animate__animated animate__slideInUp animate__delay-500ms animate__fast'></div>
+
                 {/* Side Nav bar — Project */}
                 <SideNav type='home' theme='dark' />
 
                 {/* content */}
                 <div className='relative h-screen max-w-[90%] mx-auto pr-[5%] pl-[10%]' onClick={event => this.handleClick(event)}> 
-                    <div className='sticky top-0 md:fixed flex w-full md:w-1/4 h-max md:h-[100vh] flex-col justify-center items-start bg-[#1a1818] z-10 shadow-[0_15px_10px_0_rgba(26,24,24,0.99)]'>
+                    <div className='relative md:fixed flex w-full md:w-1/4 h-max md:h-[100vh] flex-col justify-center items-start bg-[#1a1818] z-10 shadow-[0_15px_10px_0_rgba(26,24,24,0.99)] animate__animated animate__fadeIn animate__delay-1s'>
                         <div className='ml-[-10%] py-[10%] md:pt-[90%]' id='section-wrapper'>
-                            <div className='mb-[2vh] pt-[5%] overflow-hidden'>
-                                <h1 className='header swipe-up' id='title'>PROJECT</h1>
+                            <div className='mb-[2vh] pt-[5%]'>
+                                <div className='overflow-hidden'>
+                                    <h1 className='header swipe-up animate__animated animate__slideInUp animate__fast animate__delay-1s' id='title'>PROJECT</h1>
+                                </div>
                             </div>
                             <div className='block overflow-hidden'>
-                                <p className='description' id='desc1'>This is a showcase of my best project in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.</p>
+                                <p className='description animate__animated animate__slideInUp animate__fast animate__delay-1s' id='desc1'>This is a showcase of my best project in a variety of fields, from Fullstack Web development, Marketing and Mobile App development.</p>
                             </div>
                             <div className='block overflow-hidden'>
-                                <p className='description' id='desc2'>The world of Web Technologies has grown at an extremely rapid rate over the last 10 years and my aim has been to evolve with it. I’m learning and gaining new skills every day.</p>
+                                <p className='description animate__animated animate__slideInUp animate__fast animate__delay-1s' id='desc2'>The world of Web Technologies has grown at an extremely rapid rate over the last 10 years and my aim has been to evolve with it. I’m learning and gaining new skills every day.</p>
                             </div>
                         </div>
                     </div>
                     <div className='section-right section-long'>
-                        <div className='pt-[5%] md:pt-[10%] md:pl-[6%] text-left'>
-                            {projectList}
-                            <br />
+                        <div className='animate__animated animate__fadeIn animate__delay-1s'>
+                            <div className='pt-[5%] md:pt-[10%] md:pl-[6%] text-left animate__animated animate__blurIn animate__delay-1s'>
+                                {projectList}
+                                <br />
+                            </div>
                         </div>
                     </div>
                 </div>
