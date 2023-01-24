@@ -72,7 +72,7 @@ class Project extends Component {
         return (
             <div className='container-2xl h-screen relative  bg-orange-50 text-orange-50 project overflow-scroll'>
                 
-                <div className='fixed background bg-dark animate__animated animate__slideInUp animate__delay-500ms animate__fast'></div>
+                <div className='fixed background bg-dark animate__animated animate__slideInUp animate__delay-500ms animate__faster'></div>
 
                 {/* Side Nav bar — Project */}
                 <SideNav type='home' theme='dark' />

@@ -21,15 +21,20 @@ const About = (props) => {
         </object>
 
     return (
-        <div className='container-2xl h-full relative bg-orange-50 about'>
+        <div className='container-2xl h-full relative text-[#1a1818] bg-orange-50 about'>
+            <div className='fixed background bg-dark animate__animated animate__slideOutUp animate__delay-500ms animate__faster'></div>
+
             {/* Side Nav bar — About */}
             <SideNav type='home' theme='light' />
 
             <div className='relative max-w-[90%] mx-auto pr-[5%] pl-[10%]'>
                 <div className='relative w-full h-auto max-w-[768px] pt-[10%] pb-[12%]'>
-                    <img src={Heriz} alt='Heriz Yusoff' />
+                    <div className='animate__animated animate__zoomIn animate__faster animate__delay-750ms'>
+                        <img src={Heriz} alt='Heriz Yusoff' />
+                    </div>
+                    
                     <div className='overflow-hidden mb-[2vh] pt-[5%]'>
-                        <h1 className='text-left header'>About</h1>
+                        <h1 className='text-left header animate__animated animate__slideInUp animate__faster animate__delay-1500ms'>About</h1>
                     </div>
                     
                     <p className='description-static description-long'>
