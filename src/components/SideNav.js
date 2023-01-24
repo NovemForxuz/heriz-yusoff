@@ -27,7 +27,7 @@ const SideNav = ({type, theme}) => {
             {nav}
             <div className='nav-line md:mx-auto' style={myBgColor}></div>
             <div className='text-center md:absolute md:bottom-[10vh] md:inset-x-0 md:rotate-[270deg]'>
-                <div className='copyright'>&copy;/2023</div>
+                <div className='copyright' style={myColor}>&copy;/2023</div>
             </div>
         </div>
     )

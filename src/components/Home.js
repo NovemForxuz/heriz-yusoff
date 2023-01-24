@@ -9,7 +9,7 @@ const Home = (props) => {
     }, [])
     return (
         <div className='container-2xl h-screen relative bg-orange-50'>
-            <div className='fixed background bg-dark animate__animated animate__slideOutDown animate__delay-half'></div>
+            <div className='fixed background bg-dark animate__animated animate__slideOutDown animate__delay-500ms animate__fast'></div>
             
             {/* Side Nav bar — Home */}
             <SideNav type='social' />
@@ -20,16 +20,16 @@ const Home = (props) => {
                     <div className='mt-[60%] sm:mt-[20%] md:pt-[70%]'>
                         <div className='mb-[2vh] pt-[5%]'>
                             <div className='overflow-hidden'>
-                                <h3 className='header swipe-up animate__animated animate__slideInUp animate__fast animate__delay-3quarter'>HERIZ YUSOFF</h3>
+                                <h3 className='header swipe-up animate__animated animate__slideInUp animate__fast animate__delay-750ms'>HERIZ YUSOFF</h3>
                             </div>
                         </div>
                         <div className='overflow-hidden block'>
-                            <p className='description animate__animated animate__slideInUp animate__fast animate__delay-3quarter'>
+                            <p className='description animate__animated animate__slideInUp animate__fast animate__delay-750ms'>
                                 Aspiring Software Engineer and Frontend Web Developer
                             </p>
                         </div>
                         <div className='overflow-hidden block'>
-                            <p className='description animate__animated animate__slideInUp animate__fast animate__delay-3quarter'>
+                            <p className='description animate__animated animate__slideInUp animate__fast animate__delay-750ms'>
                                 Currently a Final Year student at <span><a href='https://www.ntu.edu.sg/education/undergraduate-programme/bachelor-of-engineering-in-information-engineering-and-media-iem' target='_blank' rel="noopener noreferrer">Nanyang Technological University</a></span>
                             </p>
                         </div>
