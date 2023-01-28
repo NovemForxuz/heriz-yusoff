@@ -10,7 +10,7 @@ const Home = (props) => {
 
         const interval = setInterval(() => {
             animateCSS('#project', 'pulse')
-        }, 5000)
+        }, 3000)
 
         return () => clearInterval(interval)        // similar to componentWillUnmount; prevent memory leak
     }, [])

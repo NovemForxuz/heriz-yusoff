@@ -34,7 +34,7 @@ class Project extends Component {
             const randomPrj = '#prj' + getRandomInt(1, 6)
             animateCSS(randomPrj, 'pulse')
             console.log('interval every 5s');
-        }, 5000)
+        }, 3000)
     }
 
     componentWillUnmount(){
