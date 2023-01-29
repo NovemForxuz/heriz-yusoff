@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SideNav from './SideNav'
 import Heriz from '../heriz-yusoff.png'
-import resume from '../Heriz Yusoff_Resume_Jun22.pdf'
+import resume from '../Heriz Yusoff Developer Resume web.pdf'
 
 const About = (props) => {
     useEffect(() => {
