@@ -18,8 +18,9 @@ This was created using <strong><a href="https://reactjs.org/">React</a></strong>
 </div>
 
 ## Deployment
-This project was deployed using <a href='https://vercel.com/'>Vercel</a>.
-<br><br>
+This project was deployed using <a href='https://vercel.com/'>Vercel</a>.<br>
+Link: <a href='https://heriz-yusoff.vercel.app/'>https://heriz-yusoff.vercel.app/</a>
+<br>
 
 ## Reach out to me!
 <div align="center"><h4> &nbsp; &nbsp;  &nbsp; &nbsp; Frontend Developer &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mherizpy@gmail.com &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://www.linkedin.com/in/heriz-yusoff/"> LinkedIn: Heriz-yusoff</a>
