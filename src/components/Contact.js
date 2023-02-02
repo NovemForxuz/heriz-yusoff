@@ -17,10 +17,10 @@ class Contact extends Component {
                 {/* left section */}
                 <div className='fixed left-10 xxs:left-20 md:left-40 flex w-3/4 xs:w-1/2 lg:w-1/4 h-[60vh] md:h-[100vh] flex-col justify-center items-start left-section'>
                     <div className='mb-[4vh] my-[2vh] overflow-hidden'>
-                        <h1 className='text-left animate__animated animate__slideInUp animate__delay-2500ms animate__faster'>Hello.</h1>
+                        <h1 className='text-left animate__animated animate__slideInUp animate__delay-1500ms animate__faster'>Hello.</h1>
                     </div>
                     <div className='overflow-hidden'>
-                        <div className='animate__animated animate__slideInUp animate__delay-1500ms animate__faster'>
+                        <div className='animate__animated animate__slideInUp animate__delay-2500ms animate__faster'>
                             <p className='description'>
                                 I can help build your next website. Let me know if you're on-board with having me as your developer!
                                 {/* Let me know what you need by filling in this quick&nbsp;
