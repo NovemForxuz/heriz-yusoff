@@ -26,7 +26,7 @@ class Contact extends Component {
                                 {/* Let me know what you need by filling in this quick&nbsp;
                                 <span><a href={creativeBriefForm} target="_blank" rel="noopener noreferrer">website brief</a></span>. */}
                             </p><br />
-                            <span>Email: <a href='mailto:mherizpy@gmail.com'>mherizpy@gmail.com</a></span><br />
+                            <span>Email: <a href='mailto:mherizpy@live.com'>mherizpy@live.com</a></span><br />
                             <span>On the web:&nbsp;
                                     <a href='https://www.linkedin.com/in/heriz-yusoff/' target="_blank" rel="noopener noreferrer">LinkedIn</a> /&nbsp; 
                                     <a href='https://github.com/NovemForxuz' target="_blank" rel="noopener noreferrer">Github</a>
