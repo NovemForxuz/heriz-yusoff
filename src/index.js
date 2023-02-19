@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-import { webVitals } from './vitals';
+import { sendToVercelAnalytics } from './vitals';
+import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,9 +13,4 @@ root.render(
   </React.StrictMode>
 );
 
-const analyticsId = process.env.PUBLIC_VERCEL_ANALYTICS_ID;
-
-webVitals({
-  path: window.location.pathname,
-  analyticsId,
-})
+reportWebVitals(sendToVercelAnalytics)
