@@ -12,7 +12,7 @@ root.render(
   </React.StrictMode>
 );
 
-const analyticsId = import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID;
+const analyticsId = process.env.PUBLIC_VERCEL_ANALYTICS_ID;
 
 webVitals({
   path: window.location.pathname,
