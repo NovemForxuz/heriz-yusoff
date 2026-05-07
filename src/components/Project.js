@@ -8,7 +8,7 @@ class Project extends Component {
             { title: "TECHFOLIO", subtitle: "REACT DEVELOPMENT", id: 1 },
             { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 2 },
             { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 3 },
-            { title: "MOVIE BOOKING", subtitle: "FULLSTACK WEB DEVELOPMENT", id: 4 },
+            // { title: "MOVIE BOOKING", subtitle: "FULLSTACK WEB DEVELOPMENT", id: 4 },
             { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 5 }
         ],
         links: {
