@@ -4,21 +4,25 @@ import SideNav from './SideNav'
 import Heriz from '../heriz-yusoff.png'
 import resume from '../Heriz Yusoff Developer Resume web.pdf'
 
-const About = (props) => {
+const About = () => {
     useEffect(() => {
         document.title = "Heriz Yusoff – About"
     }, [])
 
-    const myQuote = "I'm Heriz. A developer, maker and problem solver."
+    const myQuote = "I'm Heriz. A frontend engineer, builder and problem solver."
 
-    const pdfViewer = <object
+    const pdfViewer = (
+        <object
             data="https://example.com/test.pdf#page=2"
             type="application/pdf"
             width="100%"
             height="100%"
         >
-            <a href={resume} target="_blank" rel="noopener noreferrer"><button>My CV</button></a>
+            <a href={resume} target="_blank" rel="noopener noreferrer">
+                <button>My CV</button>
+            </a>
         </object>
+    )
 
     return (
         <div className='container-2xl h-full relative text-[#1a1818] bg-orange-50 about'>
@@ -29,64 +33,88 @@ const About = (props) => {
 
             <div className='relative max-w-[90%] mx-auto pr-[5%] pl-[10%]'>
                 <div className='relative w-full h-auto max-w-[768px] pt-[10%] pb-[12%]'>
+
                     <div className='animate__animated animate__zoomIn animate__faster animate__delay-750ms'>
                         <img src={Heriz} alt='Heriz Yusoff' />
                     </div>
-                    
+
                     <div className='overflow-hidden mb-[2vh] pt-[5%]'>
-                        <h1 className='text-left header animate__animated animate__slideInUp animate__faster animate__delay-1500ms'>About</h1>
+                        <h1 className='text-left header animate__animated animate__slideInUp animate__faster animate__delay-1500ms'>
+                            About
+                        </h1>
                     </div>
-                    
+
                     <p className='description-static description-long'>
-                        <span className='quote' data-title={myQuote}>{myQuote}</span><br />
-                        I’ve been coding with computers since the day I first learned Object-oriented programming. Solving algorithms has always fascinated me and I’m never afraid to try something new to explore different technologies, be it frontend or backend.<br /><br />
+                        <span className='quote' data-title={myQuote}>
+                            {myQuote}
+                        </span>
+                        <br /><br />
 
-                    Fast forward to 2023 and I’ve tried a bunch, from simple Game projects and Mobile Apps to Web Apps using HTML/CSS/JavaScript. Everything I've done, big or small, has been a crucial stepping stone to where I am now.<br /><br />
+                        I enjoy creating software that feels intuitive, purposeful and impactful. My journey into tech started with curiosity around programming and algorithms, and over time evolved into a passion for building products that solve real-world problems.
+                        <br /><br />
 
-                    What excites me most about working in software development is being able to code and create things that have purpose and solve real problems. Leaning into customer research and insight, finding the right problems to solve, delivering that value as quickly as possible, learning from it and then iterating and improving that value over time is the key to great software developement.<br /><br />
+                        Over the years, I’ve explored different areas of software development — from game projects and Android applications to fullstack web platforms and modern frontend systems. More recently, I’ve been focusing heavily on frontend engineering with React-based technologies, building responsive and scalable user experiences while balancing performance, maintainability and clean design.
+                        <br /><br />
 
-                    One of my favourite quotes by Joel Spolsky:<br /><br />
-                    
-                    <span className='quote'>“It is harder to read code than to write it.”</span><br />
-                    
-                    This resonates so deeply with me because I believe that writing good codes is key in any kind of software projects, especially with multiple people involved, to boost productivity and improve maintainability.<br /><br />
+                        What excites me most about software development is the process of turning ideas into usable products. I enjoy understanding problems, simplifying complexity and building solutions that people can actually use effectively. I’m especially interested in the intersection between engineering, product thinking and user experience.
+                        <br /><br />
 
-                    <br />
-                    <span className='header'>Experience</span><br />
-                    <br />
-                    - Degree in Information Engineering and Media<br />
-                    - Diploma in Computer Engineering<br />
-                    - Recent experience in Web Development (Frontend)<br />
-                    <br />
-                    Relevant experiences:<br />
-                    <br />
-                    - Experience in Fullstack Web Development<br />
-                    - Experience in Mobile Development (Android)<br />
-                    <br />
-                    <br />
-                    <span className='header'>Skills</span><br />
-                    <br />
-                    Web Development / JavaScript(ES6) / React / MongoDb / Agile Methodologies / Collaboration / MySQL / HTML and CSS / Responsive Web
+                        Recently, I’ve also been working on larger workflow-driven systems involving enterprise application design, API architecture and AI-assisted development processes. I enjoy turning complex operational problems into clean and manageable digital experiences.
+                        <br /><br />
+
+                        One principle that strongly shapes how I write software comes from Joel Spolsky:
+                        <br /><br />
+
+                        <span className='quote'>
+                            “It is harder to read code than to write it.”
+                        </span>
+                        <br /><br />
+
+                        I believe good software isn’t just about making things work — it’s about building systems that are understandable, maintainable and scalable for the people working on them in the future.
+                        <br /><br />
+
+                        <span className='header'>Experience</span>
+                        <br /><br />
+
+                        - Degree in Information Engineering and Media
+                        <br />
+                        - Diploma in Computer Engineering
+                        <br />
+                        - Experience in Frontend & Fullstack Web Development
+                        <br />
+                        - Experience building responsive web applications and mobile apps
+                        <br />
+                        - Experience designing workflow-driven systems and APIs
+                        <br /><br />
+
+                        <span className='header'>Skills</span>
+                        <br /><br />
+
+                        React / JavaScript (ES6+) / TypeScript / HTML & CSS / Responsive Design / Fullstack Development / REST APIs / MongoDB / MySQL / Git / Agile Methodologies / CI/CD / Collaboration / Problem Solving
+                        <br /><br />
+
+                        <span className='header'>Currently Interested In</span>
+                        <br /><br />
+
+                        - Frontend engineering and scalable UI systems
+                        <br />
+                        - Product-focused software development
+                        <br />
+                        - Enterprise workflow and operational tooling
+                        <br />
+                        - AI-assisted development workflows
+                        <br />
+                        - Building clean and maintainable systems
                     </p>
+
                     {pdfViewer}
-                    <p className='description-static description-long'>
-                    <br />
-                    <br />
-                    <span className='header'>KUDOS</span><br />
-                    <br />
-                    Most of what is in this portfolio is team work, it's very rare these days to make anything great all on your own. I have only included work that I had a large contribution to, but whether it's coding, ideas, UX, process, engineering, mentorship, advice or creative direction, the following people have influenced my growth and career path in a massive way:&nbsp;
-                    <span><a href='https://www.linkedin.com/in/takrit/?originalSubdomain=sg' target="_blank" rel="noopener noreferrer">Takrit Tanasnitukul</a></span><br />
-                    <span><a href='https://www.linkedin.com/in/vengatesang/' target="_blank" rel="noopener noreferrer">Venky</a></span>,&nbsp;
-                    <span><a href='https://www.linkedin.com/in/qiyang-sun-292b631a2/' target="_blank" rel="noopener noreferrer">Qiyang Sun</a></span>,&nbsp;
-                    <span><a href='https://cliothewindow.wixsite.com/portfolio/' target="_blank" rel="noopener noreferrer">Clio Chuang</a></span>,&nbsp;
-                    <span><a href='https://www.linkedin.com/in/limthianyew/' target="_blank" rel="noopener noreferrer">Charles Lim</a></span>,&nbsp;
-                    <span><a href='https://www.linkedin.com/in/ljunqian/' target="_blank" rel="noopener noreferrer">Jun Qian</a></span>. THANK YOU.
-                    </p>
-                    <Link to={'/contact'}><button>Contact me</button></Link>
+
+                    <Link to={'/contact'}>
+                        <button>Contact me</button>
+                    </Link>
+
                 </div>
-                                                   
             </div>
-            
         </div>
     )
 }
