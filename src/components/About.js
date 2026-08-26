@@ -2,14 +2,13 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SideNav from './SideNav'
 import Heriz from '../heriz-yusoff.png'
-import resume from '../Heriz Yusoff Developer Resume web.pdf'
+import resume from '../Heriz Yusoff Developer Resume web - v2.pdf'
+import { description } from '../constants'
 
 const About = (props) => {
     useEffect(() => {
         document.title = "Heriz Yusoff – About"
     }, [])
-
-    const myQuote = "I'm Heriz. A developer, maker and problem solver."
 
     const pdfViewer = <object
             data="https://example.com/test.pdf#page=2"
@@ -38,18 +37,12 @@ const About = (props) => {
                     </div>
                     
                     <p className='description-static description-long'>
-                        <span className='quote' data-title={myQuote}>{myQuote}</span><br />
-                        I’ve been coding with computers since the day I first learned Object-oriented programming. Solving algorithms has always fascinated me and I’m never afraid to try something new to explore different technologies, be it frontend or backend.<br /><br />
-
-                    Fast forward to 2023 and I’ve tried a bunch, from simple Game projects and Mobile Apps to Web Apps using HTML/CSS/JavaScript. Everything I've done, big or small, has been a crucial stepping stone to where I am now.<br /><br />
-
-                    What excites me most about working in software development is being able to code and create things that have purpose and solve real problems. Leaning into customer research and insight, finding the right problems to solve, delivering that value as quickly as possible, learning from it and then iterating and improving that value over time is the key to great software developement.<br /><br />
-
-                    One of my favourite quotes by Joel Spolsky:<br /><br />
+                        <span className='quote' data-title={description['main-quote']}>{description['main-quote']}</span><br />
+                        {description['main-long']}<br /><br />
+                        {description['coding-short']}<br /><br />
                     
-                    <span className='quote'>“It is harder to read code than to write it.”</span><br />
-                    
-                    This resonates so deeply with me because I believe that writing good codes is key in any kind of software projects, especially with multiple people involved, to boost productivity and improve maintainability.<br /><br />
+                    <span className='quote'>"{description['coding-quote']}"</span><br />
+                    {description['coding-long']}<br /><br />
 
                     <br />
                     <span className='header'>Experience</span><br />

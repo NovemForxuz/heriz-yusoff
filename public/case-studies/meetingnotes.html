@@ -1,0 +1,1119 @@
+<title>Confirmed in Testing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --bg:        #f3f6f3;
+    --bg-raise:  #e7ece7;
+    --bg-panel:  #ffffff;
+    --ink:       #10150f;
+    --ink-soft:  #4c584f;
+    --ink-faint: #7c8880;
+    --line:      #d3ddd4;
+    --line-soft: #e2e9e2;
+    --signal:    #0e8a5f;
+    --signal-bg: #e3f3ea;
+    --noise:     #b8502c;
+    --noise-bg:  #f7e7de;
+    --hero-bg:   #10150f;
+    --hero-ink:  #eef3ee;
+    --shadow:    0 1px 2px rgba(16,21,15,.08), 0 8px 24px rgba(16,21,15,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:        #0c100d;
+      --bg-raise:  #141a15;
+      --bg-panel:  #10150f;
+      --ink:       #e9eee9;
+      --ink-soft:  #9db0a1;
+      --ink-faint: #62726a;
+      --line:      #253028;
+      --line-soft: #1b241d;
+      --signal:    #4fd18e;
+      --signal-bg: #16261d;
+      --noise:     #e2825a;
+      --noise-bg:  #2a1e17;
+      --hero-bg:   #070907;
+      --hero-ink:  #eef3ee;
+      --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:        #0c100d;
+    --bg-raise:  #141a15;
+    --bg-panel:  #10150f;
+    --ink:       #e9eee9;
+    --ink-soft:  #9db0a1;
+    --ink-faint: #62726a;
+    --line:      #253028;
+    --line-soft: #1b241d;
+    --signal:    #4fd18e;
+    --signal-bg: #16261d;
+    --noise:     #e2825a;
+    --noise-bg:  #2a1e17;
+    --hero-bg:   #070907;
+    --hero-ink:  #eef3ee;
+    --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 30px rgba(0,0,0,.35);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", system-ui, sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--signal); color:#08130d; }
+
+  h1,h2,h3,.disp{
+    font-family:"Unbounded", "Arial Narrow", sans-serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  code, .mono{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 1.5rem; }
+  .full{ max-width:1040px; margin:0 auto; padding:0 1.5rem; }
+
+  a{ color:inherit; }
+
+  /* ================= progress bar ================= */
+  #progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:var(--signal); z-index:50;
+    transition:width .08s linear;
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    background:var(--hero-bg);
+    color:var(--hero-ink);
+    overflow:hidden;
+    padding:5.5rem 1.5rem 4rem;
+  }
+  .hero-inner{
+    max-width:820px; margin:0 auto; position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.55rem;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:.76rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--signal);
+    margin-bottom:1.6rem;
+  }
+  .eyebrow::before{
+    content:""; width:.5rem; height:.5rem; background:var(--signal);
+    display:inline-block; border-radius:50%;
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--signal) 25%, transparent);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 4.6rem);
+    font-weight:700;
+    line-height:1.02;
+    letter-spacing:-.01em;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--signal);
+  }
+  .hero .dek{
+    margin-top:1.4rem;
+    max-width:52ch;
+    font-size:1.15rem;
+    color:#c3cfc7;
+  }
+  .hero .dek b{ color:var(--hero-ink); font-weight:600; }
+
+  /* waveform */
+  .waveform{
+    display:flex; align-items:center; gap:3px;
+    height:64px; margin:2.6rem 0 2.2rem;
+  }
+  .waveform span{
+    flex:1; min-width:2px; max-width:6px;
+    background:linear-gradient(180deg, var(--signal), color-mix(in srgb, var(--signal) 40%, transparent));
+    border-radius:2px;
+    transform-origin:center;
+    animation:wave 1.6s ease-in-out infinite;
+  }
+  @keyframes wave{
+    0%,100%{ transform:scaleY(.18); }
+    50%{ transform:scaleY(1); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .waveform span{ animation:none; transform:scaleY(.55); }
+  }
+
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:.5rem .7rem;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:.74rem; color:#9fb0a5;
+  }
+  .hero-meta span{
+    border:1px solid #26332b; padding:.28rem .6rem; border-radius:3px;
+    background:#0f1611;
+  }
+
+  /* subtle grid backdrop */
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(#1a231c 1px, transparent 1px),
+      linear-gradient(90deg, #1a231c 1px, transparent 1px);
+    background-size:38px 38px;
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 30% 20%, black, transparent);
+            mask-image:radial-gradient(ellipse 70% 60% at 30% 20%, black, transparent);
+    opacity:.55;
+    z-index:1;
+  }
+
+  /* ================= stats ================= */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+    margin-top:-1px;
+  }
+  .stat{
+    background:var(--bg-panel); padding:1.5rem 1.2rem; text-align:left;
+  }
+  .stat .n{
+    font-family:"Unbounded", sans-serif; font-weight:700;
+    font-size:clamp(1.6rem,4vw,2.2rem); color:var(--signal);
+    font-variant-numeric:tabular-nums;
+    display:block;
+  }
+  .stat .l{
+    font-family:"IBM Plex Mono", monospace; font-size:.72rem;
+    color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em;
+    margin-top:.3rem; display:block;
+  }
+  @media (max-width:640px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ================= sections ================= */
+  section{ padding:4.5rem 0; }
+  section.tight{ padding:3rem 0; }
+  .kicker{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:.74rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--signal); margin-bottom:.7rem; display:block;
+  }
+  h2.section-title{
+    font-size:clamp(1.6rem,4vw,2.1rem); font-weight:600;
+    margin-bottom:1.1rem;
+  }
+  p.lead{ font-size:1.08rem; color:var(--ink-soft); max-width:64ch; }
+  p{ margin:0 0 1rem; }
+
+  /* ================= about / skim strip ================= */
+  .skim-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:.9rem;
+    margin:1.8rem 0 1.6rem;
+  }
+  @media (max-width:640px){ .skim-grid{ grid-template-columns:1fr; } }
+  .skim-card{
+    display:block; text-decoration:none; color:inherit;
+    background:var(--bg-panel); border:1px solid var(--line-soft);
+    border-radius:6px; padding:1rem 1.1rem; box-shadow:var(--shadow);
+    transition:border-color .2s, transform .2s;
+  }
+  .skim-card:hover{ border-color:var(--signal); transform:translateY(-2px); }
+  .skim-card:focus-visible{ outline:2px solid var(--signal); outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce){ .skim-card{ transition:none; } .skim-card:hover{ transform:none; } }
+  .skim-card .k{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; text-transform:uppercase;
+    letter-spacing:.05em; color:var(--signal); display:block; margin-bottom:.4rem; font-weight:600;
+  }
+  .skim-card p{ font-size:.88rem; color:var(--ink-soft); margin:0; }
+  .repo-line{
+    font-family:"IBM Plex Mono",monospace; font-size:.85rem;
+    display:flex; align-items:center; flex-wrap:wrap; gap:.3rem;
+  }
+  .repo-line a{ color:var(--signal); text-decoration:underline; text-underline-offset:2px; }
+
+  /* reveal-on-scroll */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ================= day timeline ================= */
+  .timeline{ position:relative; }
+  .day{
+    position:relative;
+    padding:0 0 2.6rem 2.2rem;
+    border-left:2px solid var(--line);
+    margin-left:.35rem;
+  }
+  .day:last-child{ border-left:2px solid transparent; }
+  .day::before{
+    content:""; position:absolute; left:-7px; top:.35rem;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--signal);
+  }
+  .day-label{
+    font-family:"IBM Plex Mono", monospace; font-size:.76rem;
+    color:var(--ink-faint); margin-bottom:.3rem; letter-spacing:.04em;
+  }
+  .day h3{
+    font-size:1.35rem; font-weight:600; margin-bottom:.7rem;
+  }
+
+  .entry{
+    background:var(--bg-panel);
+    border:1px solid var(--line-soft);
+    border-radius:6px;
+    padding:1.3rem 1.4rem;
+    margin-bottom:1rem;
+    box-shadow:var(--shadow);
+  }
+  .entry-head{ display:flex; justify-content:space-between; align-items:baseline; gap:.8rem; flex-wrap:wrap; margin-bottom:.5rem; }
+  .entry h4{ font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:1.02rem; margin:0; }
+  .commit{ font-family:"IBM Plex Mono",monospace; font-size:.7rem; color:var(--ink-faint); }
+  .entry p{ color:var(--ink-soft); font-size:.95rem; margin-bottom:.6rem; }
+  .entry p:last-child{ margin-bottom:0; }
+
+  .evidence{
+    margin-top:.7rem; padding:.75rem .9rem;
+    background:var(--signal-bg); border-radius:4px;
+    font-size:.87rem; color:var(--ink);
+    border:1px solid color-mix(in srgb, var(--signal) 30%, transparent);
+  }
+  .evidence.bad{
+    background:var(--noise-bg);
+    border-color:color-mix(in srgb, var(--noise) 30%, transparent);
+  }
+  .evidence .tag{
+    font-family:"IBM Plex Mono",monospace; font-size:.66rem; text-transform:uppercase;
+    letter-spacing:.06em; font-weight:600; color:var(--signal);
+    display:block; margin-bottom:.35rem;
+  }
+  .evidence.bad .tag{ color:var(--noise); }
+  .evidence code{ background:color-mix(in srgb, var(--ink) 8%, transparent); padding:.05rem .3rem; border-radius:2px; font-size:.85em; }
+
+  /* ================= interactive toggle ================= */
+  .toggle-card{
+    background:var(--bg-panel); border:1px solid var(--line-soft); border-radius:8px;
+    padding:1.5rem; box-shadow:var(--shadow); margin-top:1.2rem;
+  }
+  .toggle-row{ display:flex; gap:.5rem; margin-bottom:1.1rem; }
+  .toggle-btn{
+    font-family:"IBM Plex Mono",monospace; font-size:.82rem;
+    background:var(--bg-raise); border:1px solid var(--line); color:var(--ink-soft);
+    padding:.5rem 1rem; border-radius:5px; cursor:pointer;
+    transition:background .2s, color .2s, border-color .2s;
+  }
+  .toggle-btn.active{
+    background:var(--ink); color:var(--bg); border-color:var(--ink);
+  }
+  .toggle-btn:focus-visible{ outline:2px solid var(--signal); outline-offset:2px; }
+  .swap-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; }
+  @media (max-width:560px){ .swap-grid{ grid-template-columns:1fr; } }
+  .swap-cell{
+    padding:.8rem .9rem; border-radius:5px; background:var(--bg-raise);
+    border:1px solid var(--line-soft);
+  }
+  .swap-cell .said{ font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; margin-bottom:.3rem; }
+  .swap-cell .heard{
+    font-family:"IBM Plex Mono",monospace; font-size:1.02rem; font-weight:600;
+    transition:opacity .18s ease;
+  }
+  .swap-cell.state-bad .heard{ color:var(--noise); }
+  .swap-cell.state-good .heard{ color:var(--signal); }
+  .fade-swap{ animation:swapfade .32s ease; }
+  @keyframes swapfade{ from{ opacity:0; transform:translateY(3px);} to{opacity:1; transform:none;} }
+
+  /* ================= diagrams ================= */
+  figure.diagram{
+    margin:1.6rem 0 0;
+    background:var(--bg-panel);
+    border:1px solid var(--line-soft);
+    border-radius:8px;
+    padding:1.3rem 1.2rem 1rem;
+    box-shadow:var(--shadow);
+  }
+  figure.diagram svg{ width:100%; height:auto; display:block; color:var(--ink-soft); }
+  figure.diagram .sig{ color:var(--signal); }
+  figure.diagram .noi{ color:var(--noise); }
+  figcaption{
+    font-family:"IBM Plex Mono",monospace; font-size:.76rem;
+    color:var(--ink-faint); margin-top:.8rem; text-align:center;
+  }
+  svg text{ fill:currentColor; font-family:"IBM Plex Mono", monospace; }
+
+  /* ================= pattern cards ================= */
+  .pattern-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:1.6rem; }
+  .pattern-card{ background:var(--bg-panel); padding:1.4rem 1.3rem; }
+  .pattern-card .k{ font-family:"IBM Plex Mono",monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--signal); display:block; margin-bottom:.5rem; }
+  .pattern-card p{ font-size:.9rem; color:var(--ink-soft); margin:0; }
+  @media (max-width:680px){ .pattern-grid{ grid-template-columns:1fr; } }
+
+  .open-list{ counter-reset:item; list-style:none; padding:0; margin:1.2rem 0 0; }
+  .open-list li{
+    counter-increment:item; position:relative; padding:.9rem 0 .9rem 2.4rem;
+    border-top:1px solid var(--line-soft); font-size:.95rem; color:var(--ink-soft);
+  }
+  .open-list li:before{
+    content: counter(item);
+    position:absolute; left:0; top:.85rem;
+    font-family:"IBM Plex Mono",monospace; font-size:.75rem; color:var(--signal);
+    width:1.6rem; height:1.6rem; border:1px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  footer{
+    padding:2.5rem 1.5rem 3.5rem; text-align:center;
+    font-family:"IBM Plex Mono",monospace; font-size:.74rem; color:var(--ink-faint);
+    border-top:1px solid var(--line-soft); margin-top:0;
+  }
+
+  /* ================= CTA ================= */
+  .cta{
+    text-align:center; padding:3.5rem 1.5rem 1rem;
+    border-top:1px solid var(--line-soft); margin-top:1rem;
+  }
+  .cta .lead{ margin:0 auto 1.6rem; }
+  .cta-row{ display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; }
+  .cta-btn{
+    font-family:"IBM Plex Mono",monospace; font-size:.86rem;
+    padding:.7rem 1.3rem; border-radius:6px; text-decoration:none;
+    border:1px solid var(--line); color:var(--ink);
+    transition:border-color .2s, background .2s, color .2s;
+  }
+  .cta-btn.primary{ background:var(--signal); border-color:var(--signal); color:var(--hero-bg); font-weight:600; }
+  .cta-btn:not(.primary):hover{ border-color:var(--signal); color:var(--signal); }
+  .cta-btn.primary:hover{ opacity:.88; }
+  @media (prefers-reduced-motion: reduce){ .cta-btn{ transition:none; } }
+</style>
+
+<div id="progress"></div>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">MeetingNotes — Engineering Case Study</span>
+    <h1>Turning meeting <em>noise</em><br>into structured <em>signal</em>.</h1>
+    <p class="dek">A solo, three-day build of a Discord meeting-notes pipeline —
+      where <b>every design decision</b> below was made only after it was
+      pressure-tested against a real recording, a real timing run, or a
+      real API call.</p>
+    <div class="waveform" id="hero-wave" aria-hidden="true"></div>
+    <div class="hero-meta">
+      <span>18–21 Aug 2026</span>
+      <span>20 commits</span>
+      <span>Python · Whisper · OpenAI · discord.py · Craig</span>
+    </div>
+  </div>
+</div>
+
+<div class="stats full reveal">
+  <div class="stat"><span class="n" data-count="3">0</span><span class="l">days, start to dogfooded bot</span></div>
+  <div class="stat"><span class="n" data-count="20">0</span><span class="l">commits</span></div>
+  <div class="stat"><span class="n" data-count="3">0</span><span class="l">summarization passes</span></div>
+  <div class="stat"><span class="n" data-count="4">0</span><span class="l">real bugs, first real runs</span></div>
+</div>
+
+<!-- ================= BEFORE YOU DIVE IN ================= -->
+<section class="wrap">
+  <div class="reveal about-panel">
+    <span class="kicker">Before you dive in</span>
+    <h2 class="section-title">What this case study is actually showing</h2>
+    <p class="lead">MeetingNotes records a Discord meeting and turns it into
+      structured notes — automatically. Solo project, built end-to-end by
+      me over three days, paired with Claude Code for implementation —
+      I made every design call and verified every claim below myself
+      against a real recording; nothing here is an AI-generated summary of
+      work I didn't drive.</p>
+
+    <div class="skim-grid">
+      <a class="skim-card" href="#diagram-craig">
+        <span class="k">Debugs from evidence</span>
+        <p>The documented API 404'd, so I found the real one by reading a
+          live JS bundle and verified it byte-for-byte.</p>
+      </a>
+      <a class="skim-card" href="#diagram-isolation">
+        <span class="k">Designs for failure boundaries</span>
+        <p>Isolated the bot from pipeline crashes with a subprocess
+          boundary — one bad meeting can't take down the next one.</p>
+      </a>
+      <a class="skim-card" href="#dogfood">
+        <span class="k">Ships, then hardens under real use</span>
+        <p>Put the bot in front of a real meeting the night it launched,
+          and fixed four real bugs it surfaced within the hour.</p>
+      </a>
+      <a class="skim-card" href="#reflection">
+        <span class="k">Names tradeoffs instead of hiding them</span>
+        <p>Every shortcut taken — single-pass mode, shorter timestamps —
+          is written down as a deliberate, costed choice.</p>
+      </a>
+    </div>
+
+    <p class="repo-line">
+      <span class="kicker" style="margin:0 .1rem 0 0;">Code:</span>
+      <a href="https://github.com/NovemForxuz/MeetingNotes" target="_blank" rel="noopener">github.com/NovemForxuz/MeetingNotes</a>
+    </p>
+  </div>
+</section>
+
+<!-- ================= DIAGRAM: PIPELINE ================= -->
+<section class="full">
+  <div class="reveal">
+    <span class="kicker">System overview</span>
+    <h2 class="section-title">One command, two inputs, one output</h2>
+    <p class="lead"><code>pipeline.py</code> auto-detects whether it was
+      pointed at a single audio file or a Craig multi-track export folder,
+      and routes to the matching transcription step before both paths
+      converge on the same three-pass summarizer.</p>
+  </div>
+  <figure class="diagram reveal">
+    <svg viewBox="0 0 900 300" role="img" aria-label="Pipeline diagram: a single audio file or a Craig multi-track folder both enter pipeline.py's resolve_input(), which routes to transcribe.py or transcribe_multitrack.py; both produce a transcript that feeds summarize.py's three-pass extract-organize-verify sequence, producing notes.md, which discord_bot.py posts back to the channel.">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <!-- inputs -->
+      <rect x="20" y="50" width="150" height="46" rx="4" fill="none" stroke="currentColor"/>
+      <text x="95" y="70" text-anchor="middle" font-size="12">single audio file</text>
+      <text x="95" y="86" text-anchor="middle" font-size="10" opacity=".65">.flac / .wav / .mp3</text>
+
+      <rect x="20" y="150" width="150" height="46" rx="4" fill="none" stroke="currentColor"/>
+      <text x="95" y="170" text-anchor="middle" font-size="12">Craig export folder</text>
+      <text x="95" y="186" text-anchor="middle" font-size="10" opacity=".65">per-speaker tracks</text>
+
+      <!-- resolve_input -->
+      <rect x="225" y="100" width="140" height="46" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <text x="295" y="120" text-anchor="middle" font-size="12" font-weight="600">resolve_input()</text>
+      <text x="295" y="136" text-anchor="middle" font-size="10" opacity=".65">pipeline.py</text>
+
+      <line x1="170" y1="73" x2="225" y2="118" stroke="currentColor" marker-end="url(#arrow)"/>
+      <line x1="170" y1="173" x2="225" y2="128" stroke="currentColor" marker-end="url(#arrow)"/>
+
+      <!-- transcribe branches -->
+      <rect x="415" y="40" width="160" height="46" rx="4" fill="none" stroke="currentColor"/>
+      <text x="495" y="60" text-anchor="middle" font-size="12">transcribe.py</text>
+      <text x="495" y="76" text-anchor="middle" font-size="10" opacity=".65">local Whisper</text>
+
+      <rect x="415" y="160" width="160" height="46" rx="4" fill="none" stroke="currentColor"/>
+      <text x="495" y="180" text-anchor="middle" font-size="12">transcribe_multitrack.py</text>
+      <text x="495" y="196" text-anchor="middle" font-size="10" opacity=".65">per-track + merge</text>
+
+      <line x1="365" y1="115" x2="415" y2="65" stroke="currentColor" marker-end="url(#arrow)"/>
+      <line x1="365" y1="132" x2="415" y2="182" stroke="currentColor" marker-end="url(#arrow)"/>
+
+      <!-- transcript -->
+      <rect x="625" y="100" width="120" height="46" rx="4" fill="none" stroke="currentColor" class="sig" stroke-width="1.4"/>
+      <text x="685" y="120" text-anchor="middle" font-size="12" fill="currentColor" class="sig">transcript.txt</text>
+      <text x="685" y="136" text-anchor="middle" font-size="10" opacity=".65">chronological, labeled</text>
+
+      <line x1="575" y1="65" x2="655" y2="100" stroke="currentColor" marker-end="url(#arrow)"/>
+      <line x1="575" y1="182" x2="655" y2="146" stroke="currentColor" marker-end="url(#arrow)"/>
+
+      <!-- summarize -->
+      <rect x="625" y="200" width="255" height="60" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <text x="752" y="220" text-anchor="middle" font-size="12" font-weight="600">summarize.py</text>
+      <text x="752" y="236" text-anchor="middle" font-size="10" opacity=".65">extract → organize → verify</text>
+      <text x="752" y="250" text-anchor="middle" font-size="10" opacity=".65">→ notes.md</text>
+
+      <line x1="685" y1="146" x2="710" y2="200" stroke="currentColor" marker-end="url(#arrow)"/>
+
+      <!-- discord -->
+      <rect x="700" y="20" width="120" height="40" rx="4" fill="none" stroke="currentColor"/>
+      <text x="760" y="44" text-anchor="middle" font-size="12">Discord channel</text>
+      <path d="M752,200 C 752,140 780,90 780,60" fill="none" stroke="currentColor" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
+      <text x="815" y="140" font-size="10" opacity=".7" text-anchor="middle" transform="rotate(90 815 140)">posts notes.md</text>
+    </svg>
+    <figcaption>Both input types converge on the same three-pass summarizer before the result is posted back to Discord.</figcaption>
+  </figure>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="wrap">
+  <div class="reveal" style="margin-bottom:2.2rem;">
+    <span class="kicker">The build, in order</span>
+    <h2 class="section-title">Three days, in the order they happened</h2>
+    <p class="lead">Every entry below follows the same shape: a real
+      failure, a change, a re-run that either confirmed the fix or
+      surfaced the next problem.</p>
+  </div>
+
+  <div class="timeline">
+
+    <!-- DAY 1 -->
+    <div class="day reveal">
+      <div class="day-label">DAY 1 · 18 AUG</div>
+      <h3>The MVP, and where the base model falls apart</h3>
+
+      <div class="entry">
+        <div class="entry-head"><h4><code style="font-family:inherit">base</code> model mangles domain jargon</h4><span class="commit">0ba32d0</span></div>
+        <p>The default Whisper model was tested against a real recording
+          full of this project's own vocabulary — and lost the vocabulary.
+          Toggle below to hear the difference a model size made.</p>
+
+        <div class="toggle-card">
+          <div class="toggle-row">
+            <button class="toggle-btn active" data-model="base" onclick="setModel('base', this)">base (default)</button>
+            <button class="toggle-btn" data-model="small" onclick="setModel('small', this)">small</button>
+          </div>
+          <div class="swap-grid" id="swap-grid">
+            <div class="swap-cell state-bad"><div class="said">said "Docker"</div><div class="heard">darker</div></div>
+            <div class="swap-cell state-bad"><div class="said">said "containers"</div><div class="heard">condoms</div></div>
+            <div class="swap-cell state-bad"><div class="said">said "ASP.NET Core"</div><div class="heard">PSP dot net core</div></div>
+          </div>
+        </div>
+
+        <div class="evidence" style="margin-top:1rem;">
+          <span class="tag">Confirmed in testing</span>
+          Language auto-detect misfired on the same file too, locking onto
+          <code>ms</code> (Malay) for English audio — it only samples the
+          first ~30s. Best result: <code>--model small</code> +
+          <code>--language en</code> + <code>--initial-prompt</code> primed
+          with the project's own terms.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>torch silently picks CPU over a real GPU</h4><span class="commit">0ba32d0</span></div>
+        <p>A GTX 1650 Ti was present, but <code>torch.cuda.is_available()</code>
+          returned <code>False</code> — plain <code>pip install torch</code>
+          installs the CPU-only build on Windows by default. Measured
+          afterward, on CPU, against a real ~105s clip:</p>
+        <div class="evidence">
+          <span class="tag">Measured, not estimated</span>
+          <code>base</code> auto-detect: <b>~18–20s</b> · <code>small</code> + lang + prompt: <b>~32s</b> —
+          roughly 2× slower, extrapolating to <b>~9–10 min</b> for a real 30-minute meeting on this machine's CPU.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>Auto-pick from <code style="font-family:inherit">input/</code>, timestamp every output</h4><span class="commit">4b01daa</span></div>
+        <p>Drop a file in <code>input/</code> and omit the path — errors
+          loudly instead of guessing if zero or several files are there.
+          Every output gets a timestamp prefix so repeat runs never
+          silently overwrite each other.</p>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day reveal">
+      <div class="day-label">DAY 2 · 19 AUG</div>
+      <h3>Grounding the model in things it can't guess</h3>
+
+      <div class="entry">
+        <div class="entry-head"><h4><code style="font-family:inherit">--notes-file</code>: your own notes outrank the transcript</h4><span class="commit">cebece5</span></div>
+        <p>A raw transcript is often ambiguous even to a careful human
+          reader. The fix: let the user's own rough notes act as ground
+          truth, authoritative over the transcript when the two disagree.</p>
+        <div class="evidence">
+          <span class="tag">Confirmed in testing</span>
+          Adding a short notes file surfaced an action-item owner with
+          <b>zero</b> recognizable mention anywhere in the Whisper
+          transcript, and recovered several items a transcript-only run
+          had missed.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>Speaker diarization, solved by not guessing</h4><span class="commit">a649170</span></div>
+        <p>Whisper has no concept of who's talking on a mixed-down
+          recording. Craig records each speaker to a separate track —
+          so each track is transcribed independently, then merged
+          chronologically. Attribution by construction, not inference.</p>
+        <div class="evidence">
+          <span class="tag">Confirmed in testing</span>
+          Most of any one track is silence. Built-in <code>no_speech_prob</code>
+          alone missed background noise that produced fabricated text —
+          measured <code>avg_logprob</code> ≈ <b>−4.8</b> on real garbage
+          output vs. <b>−0.6 to −0.9</b> for genuine speech. Now filters on both.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>Verify the name-map once, then reuse it</h4><span class="commit">078c690</span></div>
+        <p>Discord usernames get relabeled to real names <em>before</em>
+          summarization, not left for the model to resolve mid-sentence.</p>
+        <div class="evidence">
+          <span class="tag">Confirmed in testing</span>
+          Whisper consistently misheard "Heriz" as "Harris" throughout a
+          real transcript. Relabeling first measurably improved
+          attribution over passing <code>--participants</code> alone.
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day reveal">
+      <div class="day-label">DAY 3 · 20 AUG</div>
+      <h3>From script to system</h3>
+
+      <div class="entry">
+        <div class="entry-head"><h4>Three passes to stop content going missing</h4><span class="commit">8afdb22</span></div>
+        <p>Summarizing a long transcript in one pass compresses — quietly
+          dropping minor-seeming details. The fix restructures one call
+          into three.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= DIAGRAM: THREE-PASS ================= -->
+<section class="full">
+  <div class="reveal">
+    <span class="kicker">Mechanism</span>
+    <h2 class="section-title">How the verify pass catches what organize drops</h2>
+    <p class="lead">On a real ~30-minute, 5-person transcript, the organize
+      pass alone dropped a decision and an action item that were both
+      cleanly present in the extract pass — despite explicit "never drop a
+      bullet" instructions. The verify pass diffs against the raw
+      extraction and backfills what's missing.</p>
+  </div>
+  <figure class="diagram reveal">
+    <svg viewBox="0 0 900 260" role="img" aria-label="Three-pass summarization diagram: extract pulls every point as a flat bullet list; organize structures it into the notes template but silently drops one bullet, the UAT branch policy decision; verify diffs the draft against the extraction and backfills the missing bullet into the final notes, marked as recovered.">
+      <defs>
+        <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <!-- extract -->
+      <rect x="20" y="30" width="200" height="200" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <text x="120" y="52" text-anchor="middle" font-size="12" font-weight="600">1. EXTRACT</text>
+      <text x="120" y="66" text-anchor="middle" font-size="9" opacity=".6">over-include, no organizing</text>
+      <line x1="36" y1="86" x2="204" y2="86" stroke="currentColor" opacity=".4"/>
+      <line x1="36" y1="108" x2="204" y2="108" stroke="currentColor" opacity=".4"/>
+      <line x1="36" y1="130" x2="204" y2="130" stroke="currentColor" class="sig" stroke-width="2"/>
+      <text x="36" y="126" font-size="9" class="sig">■ UAT branch policy</text>
+      <line x1="36" y1="152" x2="204" y2="152" stroke="currentColor" opacity=".4"/>
+      <line x1="36" y1="174" x2="204" y2="174" stroke="currentColor" opacity=".4"/>
+      <line x1="36" y1="196" x2="204" y2="196" stroke="currentColor" opacity=".4"/>
+
+      <!-- organize -->
+      <rect x="350" y="30" width="200" height="200" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <text x="450" y="52" text-anchor="middle" font-size="12" font-weight="600">2. ORGANIZE</text>
+      <text x="450" y="66" text-anchor="middle" font-size="9" opacity=".6">structures into template</text>
+      <line x1="366" y1="90" x2="534" y2="90" stroke="currentColor" opacity=".4"/>
+      <line x1="366" y1="112" x2="534" y2="112" stroke="currentColor" opacity=".4"/>
+      <line x1="366" y1="134" x2="534" y2="134" stroke="currentColor" class="noi" stroke-dasharray="2 3"/>
+      <text x="366" y="150" font-size="9" class="noi">✕ dropped silently</text>
+      <line x1="366" y1="172" x2="534" y2="172" stroke="currentColor" opacity=".4"/>
+      <line x1="366" y1="194" x2="534" y2="194" stroke="currentColor" opacity=".4"/>
+
+      <line x1="220" y1="130" x2="350" y2="130" stroke="currentColor" marker-end="url(#arrow2)"/>
+
+      <!-- verify -->
+      <rect x="680" y="30" width="200" height="200" rx="4" fill="none" stroke="currentColor" stroke-width="1.4" class="sig"/>
+      <text x="780" y="52" text-anchor="middle" font-size="12" font-weight="600">3. VERIFY</text>
+      <text x="780" y="66" text-anchor="middle" font-size="9" opacity=".6">diff + backfill vs. extract</text>
+      <line x1="696" y1="90" x2="864" y2="90" stroke="currentColor" opacity=".4"/>
+      <line x1="696" y1="112" x2="864" y2="112" stroke="currentColor" opacity=".4"/>
+      <line x1="696" y1="134" x2="864" y2="134" stroke="currentColor" class="sig" stroke-width="2"/>
+      <text x="696" y="150" font-size="9" class="sig">✓ backfilled</text>
+      <line x1="696" y1="172" x2="864" y2="172" stroke="currentColor" opacity=".4"/>
+      <line x1="696" y1="194" x2="864" y2="194" stroke="currentColor" opacity=".4"/>
+
+      <line x1="550" y1="130" x2="680" y2="130" stroke="currentColor" marker-end="url(#arrow2)"/>
+      <path d="M120,230 C 120,250 780,250 780,230" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity=".55" marker-end="url(#arrow2)"/>
+      <text x="450" y="248" text-anchor="middle" font-size="9" opacity=".55">verify checks against extract, not the draft</text>
+    </svg>
+    <figcaption>The organize pass dropped a real decision under explicit "don't drop" instructions; verify's diff-and-backfill step is what actually caught it.</figcaption>
+  </figure>
+
+  <div class="wrap" style="padding:0; margin-top:1.6rem;">
+    <div class="evidence bad reveal">
+      <span class="tag">Caveat found in the same test</span>
+      Verify fixed the dropped content completely — but occasionally
+      misattributed <i>who</i> said a backfilled line when it landed near
+      a speaker transition. Content loss: solved. Per-line attribution:
+      not yet perfect. <code>--single-pass</code> skips all three steps and
+      trades that completeness back for speed — confirmed to drop real
+      content on long transcripts, so reserved for low-stakes runs only.
+    </div>
+  </div>
+</section>
+
+<!-- ================= DAY 3 continued + Craig investigation ================= -->
+<section class="wrap">
+  <div class="timeline" style="border-left:none; margin-left:0; padding-left:0;">
+    <div class="day reveal" style="border-left:2px solid var(--line-soft); padding-left:2.2rem; margin-left:.35rem;">
+
+      <div class="entry">
+        <div class="entry-head"><h4>The API scaffold gets dropped, not kept "just in case"</h4><span class="commit">739a12b</span></div>
+        <p>The ASP.NET scaffold from the very first commit had never been
+          wired to anything. With the pipeline confirmed Python end to
+          end, an HTTP layer between it and the Discord bot was never
+          actually needed — so it was removed rather than carried forward.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>Read the source, then verify against the real thing</h4><span class="commit">0404ed8 · ea497cb</span></div>
+        <p>Craig has no public bot API. The first version of
+          <code style="font-family:inherit">craig_client.py</code> was
+          reconstructed by reading Craig's public GitHub source. It was wrong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIAGRAM: CRAIG API ================= -->
+<section class="full" id="diagram-craig">
+  <figure class="diagram reveal">
+    <svg viewBox="0 0 900 240" role="img" aria-label="Comparison diagram: the path built from the public GitHub repo calls craig.chat slash api slash recording colon id and dead-ends in a 404, because that repo is a stale snapshot; the path built by reading the live recording page's compiled JavaScript bundle instead calls craig.horse slash api slash v1 slash recordings colon id, succeeds, and the downloaded file's byte size matches the job's reported output size exactly.">
+      <defs>
+        <marker id="arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <text x="20" y="30" font-size="11" font-weight="600" opacity=".7">FROM THE PUBLIC GITHUB REPO</text>
+      <rect x="20" y="45" width="150" height="42" rx="4" fill="none" stroke="currentColor"/>
+      <text x="95" y="70" text-anchor="middle" font-size="11">stale/legacy source</text>
+      <line x1="170" y1="66" x2="330" y2="66" stroke="currentColor" marker-end="url(#arrow3)"/>
+      <text x="250" y="58" text-anchor="middle" font-size="9" opacity=".7">craig.chat/api/recording/:id</text>
+      <rect x="330" y="45" width="130" height="42" rx="4" fill="none" stroke="currentColor" class="noi" stroke-width="1.4"/>
+      <text x="395" y="70" text-anchor="middle" font-size="12" class="noi">404</text>
+
+      <text x="20" y="130" font-size="11" font-weight="600" opacity=".7">FROM THE LIVE PAGE'S JS BUNDLE</text>
+      <rect x="20" y="145" width="150" height="42" rx="4" fill="none" stroke="currentColor"/>
+      <text x="95" y="170" text-anchor="middle" font-size="11">real recording page</text>
+      <line x1="170" y1="166" x2="330" y2="166" stroke="currentColor" marker-end="url(#arrow3)"/>
+      <text x="250" y="158" text-anchor="middle" font-size="9" opacity=".7">craig.horse/api/v1/recordings/:id</text>
+      <rect x="330" y="145" width="130" height="42" rx="4" fill="none" stroke="currentColor" class="sig" stroke-width="1.4"/>
+      <text x="395" y="170" text-anchor="middle" font-size="12" class="sig">200 → job</text>
+
+      <line x1="460" y1="166" x2="620" y2="166" stroke="currentColor" marker-end="url(#arrow3)"/>
+      <text x="540" y="158" text-anchor="middle" font-size="9" opacity=".7">poll → complete</text>
+      <rect x="620" y="145" width="130" height="42" rx="4" fill="none" stroke="currentColor" class="sig" stroke-width="1.4"/>
+      <text x="685" y="164" text-anchor="middle" font-size="11" class="sig">/dl/&lt;file&gt;</text>
+      <text x="685" y="178" text-anchor="middle" font-size="9" class="sig" opacity=".85">size = outputSize ✓</text>
+    </svg>
+    <figcaption>The repo's read-the-source path 404'd; the real API was reconstructed by reading the live page's compiled JS and confirmed byte-for-byte against a real recording.</figcaption>
+  </figure>
+</section>
+
+<!-- ================= DAY3 continued: errors + isolation ================= -->
+<section class="wrap">
+  <div class="timeline" style="border-left:none; margin-left:0; padding-left:0;">
+    <div class="day reveal" style="border-left:2px solid var(--line-soft); padding-left:2.2rem; margin-left:.35rem;">
+
+      <div class="entry">
+        <div class="entry-head"><h4>An error message that was too honest to send</h4><span class="commit">ea497cb</span></div>
+        <p>Error messages embedded Craig's raw API response with no length
+          limit. On the failing request, that response was itself long
+          enough to exceed Discord's 4000-character message limit — so the
+          bot's attempt to <i>report</i> the real error failed too, masked
+          behind Discord's own length-limit error instead of the actual
+          cause. Fixed with truncation at both the source and the point of use.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>Shelling out on purpose</h4><span class="commit">0404ed8</span></div>
+        <p>The Discord bot calls <code style="font-family:inherit">pipeline.py</code>
+          as a separate subprocess rather than importing its functions
+          directly — because the pipeline scripts call
+          <code>sys.exit()</code> on error by design, correct for a
+          one-shot CLI script, wrong for a long-running bot.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIAGRAM: PROCESS ISOLATION ================= -->
+<section class="full" id="diagram-isolation">
+  <figure class="diagram reveal">
+    <svg viewBox="0 0 900 260" role="img" aria-label="Comparison diagram: without process isolation, an in-process import means a crash inside the summarizer propagates up and kills the entire long-running Discord bot; with process isolation, the bot spawns pipeline.py as a separate subprocess, so a crash stays contained inside that one job and the bot process keeps running for future meetings.">
+      <text x="20" y="26" font-size="11" font-weight="600" class="noi">WITHOUT ISOLATION</text>
+      <rect x="20" y="40" width="380" height="90" rx="4" fill="none" stroke="currentColor" class="noi" stroke-width="1.4"/>
+      <text x="35" y="60" font-size="11">discord_bot.py (long-running)</text>
+      <rect x="35" y="72" width="180" height="42" rx="3" fill="none" stroke="currentColor" opacity=".7"/>
+      <text x="125" y="97" text-anchor="middle" font-size="10">import summarize_and_save()</text>
+      <text x="245" y="100" font-size="18" class="noi">⚡</text>
+      <text x="270" y="97" font-size="10" class="noi">crash propagates up</text>
+      <line x1="20" y1="150" x2="400" y2="150" stroke="currentColor" class="noi" stroke-dasharray="2 3"/>
+      <text x="210" y="146" text-anchor="middle" font-size="9" class="noi">bot process dies — every future meeting fails too</text>
+
+      <text x="500" y="26" font-size="11" font-weight="600" class="sig">WITH ISOLATION</text>
+      <rect x="500" y="40" width="380" height="90" rx="4" fill="none" stroke="currentColor" class="sig" stroke-width="1.4"/>
+      <text x="515" y="60" font-size="11">discord_bot.py (long-running)</text>
+      <line x1="660" y1="70" x2="660" y2="120" stroke="currentColor" stroke-dasharray="3 3" opacity=".6"/>
+      <text x="668" y="66" font-size="8" opacity=".6">process boundary</text>
+      <rect x="690" y="72" width="170" height="42" rx="3" fill="none" stroke="currentColor" opacity=".7"/>
+      <text x="775" y="90" text-anchor="middle" font-size="9">subprocess.run(pipeline.py)</text>
+      <text x="775" y="103" text-anchor="middle" font-size="14">⚡</text>
+      <line x1="500" y1="150" x2="880" y2="150" stroke="currentColor" class="sig" stroke-dasharray="2 3"/>
+      <text x="690" y="146" text-anchor="middle" font-size="9" class="sig">one failed job — bot stays up for the next meeting</text>
+    </svg>
+    <figcaption>Same crash, two architectures: an in-process import takes the whole bot down with it; a subprocess boundary contains the failure to one job.</figcaption>
+  </figure>
+</section>
+
+<!-- ================= DAY 3 close ================= -->
+<section class="wrap">
+  <div class="timeline" style="border-left:none; margin-left:0; padding-left:0;">
+    <div class="day reveal" style="border-left:2px solid transparent; padding-left:2.2rem; margin-left:.35rem;">
+      <div class="entry">
+        <div class="entry-head"><h4>Trading seconds for a cleaner filename</h4><span class="commit">b355502</span></div>
+        <p>Output timestamps dropped from <code>HHMMSS</code> to
+          <code>HHMM</code>. The resulting same-minute collision case —
+          two runs in the same minute now overwrite each other — was
+          accepted and written down as a known, low-likelihood tradeoff
+          rather than hedged against.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DAY 3 LATE: DOGFOODING ================= -->
+<section class="wrap" id="dogfood">
+  <div class="reveal" style="margin-bottom:1.4rem;">
+    <span class="kicker">Later that same night</span>
+    <h2 class="section-title">Shipped it, then immediately used it for real</h2>
+    <p class="lead">The bot went live around midnight — and real use found
+      four more bugs within the hour, each one a config gap or a UX
+      shortcut rather than a broken feature.</p>
+  </div>
+
+  <div class="timeline" style="margin-left:.35rem;">
+    <div class="day reveal">
+      <div class="day-label">DAY 3 (LATE) · 20–21 AUG</div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>One real run, one real speaker shown as two people</h4><span class="commit">acc9545</span></div>
+        <p>Diagnosed from an actual bot run: without <code>CRAIG_NAME_MAP</code>
+          set, the transcript kept raw Discord usernames, and the summarizer
+          split one real speaker into two identities in the notes.</p>
+        <div class="evidence bad">
+          <span class="tag">Real bug, real run</span>
+          "<b>Madooshik95</b>" and "<b>Aaron</b>" appeared as two separate
+          people in the Discussion section — same person, confirmed against
+          transcript content weeks earlier. Fix: <code>run_pipeline()</code>
+          now also derives <code>--participants</code> from
+          <code>CRAIG_NAME_MAP</code>'s real-name side automatically —
+          relabeling alone wasn't the full fix; all three grounding levers
+          (relabeled transcript + <code>--participants</code> +
+          <code>--notes-file</code>) together were what testing had already
+          shown worked best.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>Notes that aren't the same file every time</h4><span class="commit">bba1201</span></div>
+        <p>A static <code>MEETING_NOTES_FILE</code> path meant editing
+          <code>.env</code> and restarting the bot before every meeting with
+          different rough notes. <code>/meetingnotes</code> now takes an
+          optional attachment instead — per-meeting notes, when given,
+          override the static default; omitting it falls back unchanged.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>"I don't see the new option" — an hour-long red herring</h4><span class="commit">b117ae2</span></div>
+        <p>The new notes-attachment parameter was real and correctly
+          registered — just not visible yet.</p>
+        <div class="evidence bad">
+          <span class="tag">Root cause</span>
+          <code>tree.sync()</code> with no guild registers commands
+          <b>globally</b>, which Discord can take up to an hour to
+          propagate. Added an optional <code>DISCORD_GUILD_ID</code> for
+          guild-scoped registration, which syncs instantly — with a printed
+          warning if left unset, rather than silently eating the delay.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head"><h4>A progress bar driven by real signals, not a spinner</h4><span class="commit">5970535</span></div>
+        <p>Sitting through a silent multi-minute wait made the next fix
+          obvious: surface what's actually happening, from data the system
+          already has.</p>
+        <div class="evidence">
+          <span class="tag">Confirmed in testing</span>
+          <code>estimate_cook_progress()</code> reads Craig's real job-status
+          transitions (<code>starting → encoding → finalizing → complete</code>,
+          with real per-track percentages); the bot separately parses
+          <code>pipeline.py</code>'s actual stdout ("Transcribing track
+          X/Y", "Pass X/3"), weighted <b>90/10</b> transcription/
+          summarization to match real observed timing — transcription
+          dominates wall-clock time. One Discord message is edited in
+          place, throttled against rate limits, instead of spamming new
+          ones per update.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REFLECTION ================= -->
+<section class="wrap" id="reflection" style="border-top:1px solid var(--line-soft);">
+  <div class="reveal">
+    <span class="kicker">Reflection</span>
+    <h2 class="section-title">What I'd tell someone reading the commits</h2>
+    <p class="lead">No decision above was made in the abstract — each one
+      starts from a specific failure on a specific recording, and I judged
+      the fix only by whether a re-run actually closed it. Three things I
+      noticed about my own process, looking back:</p>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <span class="k">Evidence over intuition</span>
+        <p>"<code>base</code> should be fine" and "the repo says
+          <code>/api/recording/:id</code>" both sounded reasonable to me and
+          were both wrong until I tested against a real file and a real
+          request. I'd rather be slow and right than fast and plausible.</p>
+      </div>
+      <div class="pattern-card">
+        <span class="k">Ground truth over inference</span>
+        <p>Per-speaker tracks instead of diarization guesswork; a human's
+          own notes outranking the transcript when they conflict — I kept
+          reaching for a known fact before a smarter guess, and it paid
+          off every time.</p>
+      </div>
+      <div class="pattern-card">
+        <span class="k">Tradeoffs named, not hidden</span>
+        <p>Three-pass summarization costs 3× the API calls. Multitrack
+          costs N× the runtime. I wrote every one of these down as a
+          conscious choice rather than let a shortcut hide as a default.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:1.6rem;">
+      If I rebuilt this today, I'd add the diarization filtering
+      thresholds as config instead of constants the first time, not the
+      second — I ended up hand-tuning <code>avg_logprob</code> against one
+      real recording, which works, but won't generalize to a noisier
+      room without someone re-tuning it by hand again.
+    </p>
+  </div>
+</section>
+
+<!-- ================= OPEN ================= -->
+<section class="wrap">
+  <div class="reveal">
+    <span class="kicker">Status</span>
+    <h2 class="section-title">Where it stands, 21 Aug 2026</h2>
+    <ol class="open-list">
+      <li>The full loop is not just built but <b>dogfooded</b> — real
+        <code>/meetingnotes</code> runs through Discord's own interaction
+        flow found and fixed four real bugs the same night it shipped
+        (duplicate speakers, static notes, an invisible new option, a
+        silent multi-minute wait).</li>
+      <li>Every bug found so far has been a config/UX gap, not a broken
+        core mechanism — the transcription and summarization pipeline
+        underneath has held up across all of it.</li>
+      <li>Multi-speaker overlap on a single mixed-down file is still
+        unsolved — out of scope for this MVP, would need a dedicated
+        diarization step.</li>
+    </ol>
+  </div>
+</section>
+
+<div class="cta wrap reveal">
+  <h2 class="section-title">Read the code, or ask me about it</h2>
+  <p class="lead">Every claim in this page traces back to a real commit —
+    the full history, including the parts that didn't make the writeup,
+    is public.</p>
+  <div class="cta-row">
+    <a class="cta-btn primary" href="https://github.com/NovemForxuz/MeetingNotes" target="_blank" rel="noopener">View the repo →</a>
+    <a class="cta-btn" href="mailto:mherizpy@gmail.com">Email me</a>
+  </div>
+</div>
+
+<footer>
+  MeetingNotes — case study compiled 21 Aug 2026 · source: repo README + commit history, c6619b3 → 5970535
+</footer>
+
+<script>
+(function(){
+  // hero waveform bars
+  var wave = document.getElementById('hero-wave');
+  var N = 48;
+  for (var i=0; i<N; i++){
+    var s = document.createElement('span');
+    s.style.animationDelay = (Math.sin(i*0.7)*0.4 + i*0.045) + 's';
+    s.style.animationDuration = (1.1 + (i % 5) * 0.18) + 's';
+    wave.appendChild(s);
+  }
+
+  // scroll progress
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // reveal on scroll
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.reveal');
+  if (reduced || !('IntersectionObserver' in window)){
+    targets.forEach(function(t){ t.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  // stat count-up
+  var stats = document.querySelectorAll('.stat .n');
+  var counted = false;
+  function countUp(){
+    if (counted) return; counted = true;
+    stats.forEach(function(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      if (reduced){ el.textContent = target; return; }
+      var cur = 0;
+      var step = Math.max(1, Math.round(target/24));
+      var t = setInterval(function(){
+        cur += step;
+        if (cur >= target){ cur = target; clearInterval(t); }
+        el.textContent = cur;
+      }, 28);
+    });
+  }
+  var statsBlock = document.querySelector('.stats');
+  if (statsBlock){
+    if ('IntersectionObserver' in window){
+      var io2 = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting){ countUp(); io2.disconnect(); } });
+      }, {threshold:0.4});
+      io2.observe(statsBlock);
+    } else { countUp(); }
+  }
+
+  // base/small toggle
+  var DATA = {
+    base:  [{s:'Docker', h:'darker'}, {s:'containers', h:'condoms'}, {s:'ASP.NET Core', h:'PSP dot net core'}],
+    small: [{s:'Docker', h:'Docker'}, {s:'containers', h:'containers'}, {s:'ASP.NET Core', h:'ASP.NET Core'}]
+  };
+  window.setModel = function(model, btn){
+    document.querySelectorAll('.toggle-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var cells = document.querySelectorAll('#swap-grid .swap-cell');
+    var rows = DATA[model];
+    cells.forEach(function(cell, i){
+      var heard = cell.querySelector('.heard');
+      heard.classList.remove('fade-swap');
+      void heard.offsetWidth;
+      heard.textContent = rows[i].h;
+      heard.classList.add('fade-swap');
+      cell.classList.toggle('state-bad', model === 'base');
+      cell.classList.toggle('state-good', model === 'small');
+    });
+  };
+})();
+</script>
+</content>

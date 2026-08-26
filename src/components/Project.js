@@ -9,7 +9,8 @@ class Project extends Component {
             { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 2 },
             { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 3 },
             { title: "MOVIE BOOKING", subtitle: "FULLSTACK WEB DEVELOPMENT", id: 4 },
-            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 5 }
+            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 5 },
+            { title: "MEETINGNOTES", subtitle: "PYTHON / DISCORD AUTOMATION", id: 6 }
         ],
         links: {
             1: 'https://github.com/NovemForxuz/heriz-yusoff',
@@ -17,6 +18,7 @@ class Project extends Component {
             3: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
             4: 'https://github.com/NovemForxuz/Cinema-Booking',
             5: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
+            6: '/case-studies/meetingnotes.html',
         },
         default: {
             title: 'PROJECT',
@@ -31,7 +33,7 @@ class Project extends Component {
         const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 
         this.interval = setInterval(() => {
-            const randomPrj = '#prj' + getRandomInt(1, 6)
+            const randomPrj = '#prj' + getRandomInt(1, 7)
             animateCSS(randomPrj, 'pulse')
             console.log('interval every 5s');
         }, 3000)
