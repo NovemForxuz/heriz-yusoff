@@ -8,17 +8,15 @@ class Project extends Component {
             { title: "TECHFOLIO", subtitle: "REACT DEVELOPMENT", id: 1 },
             { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 2 },
             { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 3 },
-            { title: "MOVIE BOOKING", subtitle: "FULLSTACK WEB DEVELOPMENT", id: 4 },
-            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 5 },
-            { title: "MEETINGNOTES", subtitle: "PYTHON / DISCORD AUTOMATION", id: 6 }
+            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 4 },
+            { title: "MEETINGNOTES", subtitle: "PYTHON / DISCORD AUTOMATION", id: 5 }
         ],
         links: {
             1: 'https://github.com/NovemForxuz/heriz-yusoff',
             2: 'https://github.com/ljunqian/Float',
             3: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
-            4: 'https://github.com/NovemForxuz/Cinema-Booking',
-            5: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
-            6: '/case-studies/meetingnotes.html',
+            4: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
+            5: '/case-studies/meetingnotes.html',
         },
         default: {
             title: 'PROJECT',

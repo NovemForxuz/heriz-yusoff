@@ -45,7 +45,7 @@ const SideNav = ({type, theme}) => {
             {nav}
             <div className='nav-line md:mx-auto' style={myLineColor}></div>
             <div className='text-center md:absolute md:bottom-[10vh] md:inset-x-0 md:rotate-[270deg]'>
-                <div className='copyright' style={myColor}>&copy;/2024</div>
+                <div className='copyright' style={myColor}>&copy;/2026</div>
             </div>
         </div>
     )
