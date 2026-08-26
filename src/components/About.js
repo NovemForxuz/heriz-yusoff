@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import SideNav from './SideNav'
 import Heriz from '../heriz-yusoff.png'
 import resume from '../Heriz Yusoff Developer Resume web - v2.pdf'
-import { description } from '../constants'
 
 const About = () => {
     useEffect(() => {
