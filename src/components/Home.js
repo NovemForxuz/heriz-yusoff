@@ -55,7 +55,7 @@ const Home = (props) => {
                         </div>
                         <div className='overflow-hidden block'>
                             <p className='description animate__animated animate__slideInUp animate__faster animate__delay-750ms'>
-                                Currently a Software Engineer at <span><a href='https://www.ncs.co/en-sg/opportunities/nucleus-2-0/' target='_blank' rel="noopener noreferrer">NCS</a></span>, learning from the Dojo...
+                                Currently a Software Engineer at <span><a href='https://www.ncs.co/en-sg/' target='_blank' rel="noopener noreferrer">NCS</a></span>, learning from the Dojo...
                             </p>
                         </div>
                     </div>
