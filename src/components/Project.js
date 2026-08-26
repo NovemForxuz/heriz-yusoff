@@ -5,18 +5,16 @@ import animateCSS from './Animation'
 class Project extends Component {
     state = {
         projects: [
-            { title: "TECHFOLIO", subtitle: "REACT DEVELOPMENT", id: 1 },
-            { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 2 },
-            { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 3 },
-            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 4 },
-            { title: "MEETINGNOTES", subtitle: "PYTHON / DISCORD AUTOMATION", id: 5 }
+            { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 1 },
+            { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 2 },
+            { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 3 },
+            { title: "MEETINGNOTES", subtitle: "PYTHON / DISCORD AUTOMATION", id: 4 }
         ],
         links: {
-            1: 'https://github.com/NovemForxuz/heriz-yusoff',
-            2: 'https://github.com/ljunqian/Float',
-            3: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
-            4: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
-            5: '/case-studies/meetingnotes.html',
+            1: 'https://github.com/ljunqian/Float',
+            2: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
+            3: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
+            4: '/case-studies/meetingnotes.html',
         },
         default: {
             title: 'PROJECT',
