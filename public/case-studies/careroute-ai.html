@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareRoute AI — Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #12161f;
+    --ink-raised: #171c26;
+    --paper: #e8e9ed;
+    --paper-dim: #9aa0af;
+    --line: #262b38;
+    --signal: #5fc4be;
+    --flag: #d9a05b;
+    --muted: #7a8194;
+    --max-w: 720px;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+    --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--signal); text-decoration: none; }
+  a:hover, a:focus-visible { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Top nav / back link ---------- */
+  .backlink {
+    padding: 32px 0 0;
+  }
+  .backlink a {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  .backlink a:hover { color: var(--signal); }
+
+  /* ---------- Header ---------- */
+  header.case-header {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+  }
+  .eyebrow span { color: var(--muted); }
+  h1 {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.2;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+  .dek {
+    font-size: 19px;
+    color: var(--paper-dim);
+    max-width: 58ch;
+    margin: 0;
+  }
+
+  .jump-cta {
+    margin: 18px 0 0;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  .jump-cta a { font-weight: 500; }
+
+  .stat-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-top: 26px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .stat {
+    flex: 1 1 140px;
+    padding: 14px 16px;
+    border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat:last-child { border-right: none; }
+  .stat strong {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--signal);
+  }
+  .stat span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 28px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .meta-row div { color: var(--muted); }
+  .meta-row strong {
+    display: block;
+    color: var(--paper);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section { margin-bottom: 56px; }
+  section > h2 {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  section p { margin: 0 0 16px; color: var(--paper); }
+  section p:last-child { margin-bottom: 0; }
+  section ul { padding-left: 20px; margin: 0 0 16px; }
+  section li { margin-bottom: 8px; }
+
+  .placeholder {
+    color: var(--flag);
+    font-style: italic;
+  }
+  .placeholder::before { content: "▸ "; }
+
+  /* ---------- Decision Log (signature element) ---------- */
+  .decision-log { counter-reset: decision; }
+  .decision {
+    counter-increment: decision;
+    position: relative;
+    padding: 24px 0 24px 44px;
+    border-left: 1px solid var(--line);
+    margin-left: 6px;
+  }
+  .decision:last-child { padding-bottom: 4px; }
+  .decision::before {
+    content: counter(decision, decimal-leading-zero);
+    position: absolute;
+    left: -13px;
+    top: 24px;
+    width: 24px;
+    height: 24px;
+    background: var(--ink);
+    border: 1px solid var(--signal);
+    color: var(--signal);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .decision-card {
+    background: var(--ink-raised);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px 22px;
+  }
+  .decision-card h3 {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 14px;
+    color: var(--paper);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .live-badge {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--signal);
+    border: 1px solid var(--signal);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+  .decision-field { margin-bottom: 12px; }
+  .decision-field:last-child { margin-bottom: 0; }
+  .decision-field .label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .decision-field.context .label { color: var(--muted); }
+  .decision-field.alternatives .label { color: var(--muted); }
+  .decision-field.chose .label { color: var(--signal); }
+  .decision-field.tradeoff .label { color: var(--flag); }
+  .decision-field p { margin: 0; font-size: 15.5px; color: var(--paper-dim); }
+  .decision-field.chose p { color: var(--paper); }
+
+  details.decision-field.tradeoff summary.label {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+  details.decision-field.tradeoff summary.label::-webkit-details-marker { display: none; }
+  details.decision-field.tradeoff summary.label::before {
+    content: "▸";
+    display: inline-block;
+    transition: transform 0.2s ease;
+    color: var(--flag);
+  }
+  details.decision-field.tradeoff[open] summary.label::before { transform: rotate(90deg); }
+  details.decision-field.tradeoff summary.label:hover { color: var(--paper); }
+  details.decision-field.tradeoff .reveal-hint {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  details.decision-field.tradeoff[open] .reveal-hint { display: none; }
+  details.decision-field.tradeoff p { margin-top: 10px; }
+
+  /* ---------- Inline code ---------- */
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--signal);
+    background: var(--ink-raised);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ---------- Diagrams ---------- */
+  .diagram-wrap {
+    margin: 20px 0 28px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--ink-raised);
+    padding: 16px 8px;
+  }
+  .diagram-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .diagram-caption {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin: -18px 0 28px;
+  }
+  .diagram-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    justify-content: center;
+    margin: 10px 0 0;
+  }
+  .diagram-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .diagram-legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+  /* ---------- HITL simulator ---------- */
+  svg [data-seg] { transition: opacity 0.35s ease; }
+  svg .sim-dim { opacity: 0.25; }
+  svg .sim-active { opacity: 1; }
+  svg .sim-active .d-edge { stroke: var(--paper); stroke-width: 2.2; }
+  svg .sim-active .d-diamond { stroke: var(--paper-dim); stroke-width: 2.2; }
+  svg .sim-active .d-out-escalate { stroke-width: 2.6; filter: drop-shadow(0 0 5px rgba(217,160,91,0.55)); }
+  svg .sim-active .d-out-neutral { stroke: var(--paper-dim); stroke-width: 2; filter: drop-shadow(0 0 5px rgba(154,160,175,0.4)); }
+  svg .sim-active .d-out-ask { stroke-width: 2.8; filter: drop-shadow(0 0 6px rgba(95,196,190,0.6)); }
+
+  .sim-panel {
+    margin-top: 22px;
+    border-top: 1px dashed var(--line);
+    padding-top: 20px;
+    scroll-margin-top: 24px;
+  }
+  .sim-title {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+  .sim-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .sim-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--paper-dim);
+    cursor: pointer;
+  }
+  .sim-toggle input { accent-color: var(--signal); width: 15px; height: 15px; cursor: pointer; flex-shrink: 0; }
+  .sim-range-row, .sim-select-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--muted);
+    grid-column: span 2;
+  }
+  .sim-range-row { flex-direction: row; align-items: center; gap: 10px; }
+  .sim-range-row input[type="range"] { accent-color: var(--signal); flex: 1; }
+  .sim-val { color: var(--paper); min-width: 3.2em; text-align: right; }
+  .sim-select-row select {
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    width: max-content;
+  }
+  .sim-result {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 6px;
+    background: var(--ink);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+  }
+  .sim-action {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid currentColor;
+  }
+  .sim-action-escalate { color: var(--flag); }
+  .sim-action-ask { color: var(--signal); }
+  .sim-action-proceed { color: var(--muted); }
+  .sim-reason { color: var(--paper-dim); }
+
+  @media (max-width: 560px) {
+    .sim-grid { grid-template-columns: 1fr; }
+    .sim-range-row, .sim-select-row { grid-column: span 1; }
+  }
+
+  /* ---------- Test evidence ---------- */
+  .terminal {
+    background: var(--ink-raised);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 0 0 16px;
+    overflow-x: auto;
+  }
+  .terminal-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .terminal pre {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--paper-dim);
+    white-space: pre;
+  }
+  .terminal .pass { color: var(--signal); }
+  .terminal .dim { color: var(--muted); }
+
+  /* ---------- Tags ---------- */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0 48px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .decision { padding-left: 34px; }
+    .decision::before { width: 20px; height: 20px; font-size: 10px; left: -11px; top: 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap backlink">
+  <a href="../index.html">&larr; back to portfolio</a>
+</div>
+
+<div class="wrap">
+  <header class="case-header">
+    <div class="eyebrow">
+      <span>Capstone · Group Project</span>
+      <span>Role: HITL Agent Owner</span>
+    </div>
+    <h1>CareRoute AI</h1>
+    <p class="dek">A multi-agent healthcare triage system — designed to route patient cases through a human-in-the-loop safety layer before clinical handoff.</p>
+    <p class="jump-cta">↓ <a href="#live-demo">try the actual escalation logic yourself</a> — it's live, not a mockup</p>
+
+    <div class="stat-strip">
+      <div class="stat"><strong>17/17</strong><span>unit tests passing</span></div>
+      <div class="stat"><strong>1.000 / 1.000</strong><span>recall / specificity (E5)</span></div>
+      <div class="stat"><strong>2 of 6</strong><span>workers I owned</span></div>
+      <div class="stat"><strong>2 → 3</strong><span>outcomes HITL can reach</span></div>
+    </div>
+
+    <div class="meta-row">
+      <div>Team size<strong>5 (one agent each)</strong></div>
+      <div>Timeframe<strong>Jul–Aug 2026 (~6 wks)</strong></div>
+      <div>Stack<strong>FastAPI + SSE, Claude CLI / OpenAI, A2A bus</strong></div>
+      <div>Advisor<strong>Prof. Chen Junhua</strong></div>
+    </div>
+  </header>
+
+  <section id="overview">
+    <h2>Overview</h2>
+    <p>CareRoute AI is a six-worker triage pipeline: a patient's free-text symptoms are normalised, classified into an acuity code by a trained severity model, checked against a deterministic red-flag override, routed to a care tier and clinic, then passed through my Human-in-the-Loop gate and a final Reflection critic — each step streamed to the frontend over SSE and passed agent-to-agent on a typed message bus. My component sits second-to-last: by the time a case reaches HITL, every upstream worker has already produced an opinion, and HITL's job is to decide whether a machine's opinion is good enough to act on without a clinician looking at it first.</p>
+
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 640 1040" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CareRoute pipeline: Symptom-Intake, Severity-Classifier, Safety-Override, Care-Routing, Human-in-the-Loop, Reflection, then Clinician-Handoff when escalated.">
+        <defs>
+          <marker id="arrow1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+          </marker>
+        </defs>
+        <style>
+          .n-title{font-family:var(--font-mono);font-size:15px;font-weight:600;fill:var(--paper);}
+          .n-cap{font-family:var(--font-mono);font-size:11px;fill:var(--muted);}
+          .n-msg{font-family:var(--font-mono);font-size:10.5px;fill:var(--signal);}
+          .n-pill{font-family:var(--font-mono);font-size:12px;fill:var(--paper-dim);}
+          .n-edge{stroke:var(--muted);stroke-width:1.4;fill:none;}
+          .n-box{fill:var(--ink);stroke:var(--line);stroke-width:1.4;rx:6;}
+          .n-box-mine{fill:var(--ink);stroke:var(--signal);stroke-width:2;rx:6;}
+        </style>
+
+        <rect x="220" y="8" width="200" height="34" rx="17" class="n-box"/>
+        <text x="320" y="30" text-anchor="middle" class="n-pill">case.opened</text>
+        <line x1="320" y1="42" x2="320" y2="78" class="n-edge" marker-end="url(#arrow1)"/>
+
+        <rect x="80" y="78" width="480" height="62" class="n-box"/>
+        <text x="320" y="103" text-anchor="middle" class="n-title">Symptom-Intake</text>
+        <text x="320" y="123" text-anchor="middle" class="n-cap">Sham · free text → clean sentence + keywords</text>
+        <line x1="320" y1="140" x2="320" y2="176" class="n-edge" marker-end="url(#arrow1)"/>
+        <text x="330" y="162" class="n-msg">symptoms.normalised</text>
+
+        <rect x="80" y="176" width="480" height="62" class="n-box"/>
+        <text x="320" y="201" text-anchor="middle" class="n-title">Severity-Classifier</text>
+        <text x="320" y="221" text-anchor="middle" class="n-cap">James · ML model + SHAP + RAG · proposes 1 question if unsure</text>
+        <line x1="320" y1="238" x2="320" y2="274" class="n-edge" marker-end="url(#arrow1)"/>
+        <text x="330" y="260" class="n-msg">acuity.classified</text>
+
+        <rect x="80" y="274" width="480" height="62" class="n-box"/>
+        <text x="320" y="299" text-anchor="middle" class="n-title">Safety-Override</text>
+        <text x="320" y="319" text-anchor="middle" class="n-cap">Aaron · deterministic red-flag floor, never overridden</text>
+        <line x1="320" y1="336" x2="320" y2="372" class="n-edge" marker-end="url(#arrow1)"/>
+        <text x="330" y="358" class="n-msg">safety.override</text>
+
+        <rect x="80" y="372" width="480" height="62" class="n-box"/>
+        <text x="320" y="397" text-anchor="middle" class="n-title">Care-Routing</text>
+        <text x="320" y="417" text-anchor="middle" class="n-cap">Marcus · acuity → care tier + clinic + wait</text>
+        <line x1="320" y1="434" x2="320" y2="470" class="n-edge" marker-end="url(#arrow1)"/>
+        <text x="330" y="456" class="n-msg">care.routed</text>
+
+        <rect x="80" y="470" width="480" height="66" class="n-box-mine"/>
+        <text x="320" y="497" text-anchor="middle" class="n-title">Human-in-the-Loop ★</text>
+        <text x="320" y="518" text-anchor="middle" class="n-cap">Heriz · escalate / ask / proceed — the last gate</text>
+        <line x1="320" y1="536" x2="320" y2="572" class="n-edge" marker-end="url(#arrow1)"/>
+        <text x="330" y="558" class="n-msg">review.decision</text>
+
+        <rect x="80" y="572" width="480" height="62" class="n-box"/>
+        <text x="320" y="597" text-anchor="middle" class="n-title">Reflection / Critic</text>
+        <text x="320" y="617" text-anchor="middle" class="n-cap">platform · can still force an escalation nothing upstream flagged</text>
+        <line x1="320" y1="634" x2="320" y2="668" class="n-edge" marker-end="url(#arrow1)"/>
+
+        <polygon points="320,668 420,738 320,808 220,738" fill="var(--ink)" stroke="var(--line)" stroke-width="1.4"/>
+        <text x="320" y="732" text-anchor="middle" class="n-cap">state.escalated</text>
+        <text x="320" y="748" text-anchor="middle" class="n-cap">== true?</text>
+
+        <line x1="420" y1="738" x2="470" y2="738" class="n-edge" marker-end="url(#arrow1)"/>
+        <text x="426" y="728" class="n-msg">yes</text>
+        <line x1="220" y1="738" x2="150" y2="738" class="n-edge" marker-end="url(#arrow1)"/>
+        <text x="152" y="728" class="n-msg" text-anchor="end">no</text>
+
+        <rect x="10" y="708" width="140" height="60" class="n-box"/>
+        <text x="80" y="732" text-anchor="middle" class="n-cap">No clinician touch —</text>
+        <text x="80" y="748" text-anchor="middle" class="n-cap">result reaches patient</text>
+
+        <line x1="320" y1="808" x2="320" y2="844" class="n-edge" marker-end="url(#arrow1)"/>
+
+        <rect x="80" y="844" width="480" height="66" class="n-box-mine"/>
+        <text x="320" y="871" text-anchor="middle" class="n-title">Clinician-Handoff ★</text>
+        <text x="320" y="892" text-anchor="middle" class="n-cap">Heriz · faithfulness-first summary + citations for the queue</text>
+        <line x1="320" y1="910" x2="320" y2="946" class="n-edge" marker-end="url(#arrow1)"/>
+        <text x="330" y="932" class="n-msg">handoff.ready</text>
+
+        <rect x="220" y="946" width="200" height="34" rx="17" class="n-box"/>
+        <text x="320" y="968" text-anchor="middle" class="n-pill">Clinician queue</text>
+      </svg>
+    </div>
+    <p class="diagram-caption">the 6-worker pipeline, streamed over SSE and wired agent-to-agent on a typed message bus</p>
+    <div class="diagram-legend">
+      <span><i style="background:var(--signal);"></i>components I own</span>
+      <span><i style="background:var(--line);border:1px solid var(--muted);"></i>teammates' components</span>
+    </div>
+  </section>
+
+  <section id="problem">
+    <h2>Problem</h2>
+    <p>The system's own design principle is "AI assists, clinician decides" — but nothing enforces that unless one component is explicitly responsible for catching the cases where the AI shouldn't decide alone. Skip HITL and two failure modes go unchecked: a confident-but-wrong acuity call reaches the patient with no human check, or a returning patient whose symptoms are trending worse across visits gets treated as a fresh, independent case. HITL is the last gate before a case is handled without a clinician in the loop, which is also why it's the one component our advisor singled out for scrutiny — see Decision 1.</p>
+  </section>
+
+  <section id="contribution">
+    <h2>Your contribution</h2>
+    <p>Owned the Human-in-the-Loop (HITL) agent (<code>hitl.py</code>) — the checkpoint responsible for surfacing cases that require clinician review before a triage decision is finalized — plus the downstream Clinician-Handoff agent (<code>handoff.py</code>) that turns an escalation into a reviewable packet for the clinician queue.</p>
+    <ul style="list-style:none; padding-left:0;">
+      <li>Designed the escalation policy itself: an any-of composition over three independent floors (deterministic safety-override trigger, classifier confidence below threshold, cross-visit recurrence at equal-or-worse acuity), with reasons accumulated rather than short-circuited so a clinician opening the queue sees every signal that fired, not just the first one.</li>
+      <li>Declared HITL's least-privilege tool allow-list (<code>escalation.create</code> only) and its A2A comms contract — subscribing to the classifier, safety-override and routing announcements, publishing the review decision for Reflection to consume.</li>
+      <li>Built <code>ClinicianHandoffAgent</code>: a bounded, faithfulness-first summariser that turns the fully-assembled case into a plain-language handoff note, grounded in retrieved citations only when a safety rule actually fired, with a deterministic template fallback that can't invent facts the LLM path could.</li>
+      <li>Before → after: HITL started as a two-outcome policy node (escalate / don't). After the widening in Decision 1 below, it's a three-outcome gate (escalate / ask the patient one clarifying question / proceed) — the same floors as before, now with a way to resolve low confidence without automatically consuming a clinician's time.</li>
+    </ul>
+  </section>
+
+  <section id="decisions">
+    <h2>Key design decisions</h2>
+    <div class="decision-log">
+
+      <div class="decision">
+        <div class="decision-card">
+          <h3>Extending HITL into a true agentic component <span class="live-badge">◆ interactive demo below</span></h3>
+          <div class="decision-field context">
+            <span class="label">Context</span>
+            <p>Professor Junhua flagged that the original HITL implementation didn't qualify as a true agentic component within the system's architecture.</p>
+          </div>
+          <div class="decision-field alternatives">
+            <span class="label">Alternatives considered</span>
+            <p>Rewriting HITL as an LLM-based agent was on the table implicitly — it's the obvious way to manufacture "reasoning." We rejected it as a team: the project's own audit is explicit that the fix for a flagged policy node is never "make it call a model" — <code>redflags.py</code>'s deterministic rules are intentionally not LLM-based because they're the last line of defense, and turning the last gate before a clinician into a probabilistic one would trade a guarantee for a guess. The other option was doing nothing beyond a written justification for why HITL is fine as a two-outcome policy node — rejected because it left the clarifying-question evaluation (E2) permanently blocked with no path to actually asking a patient anything.</p>
+          </div>
+          <div class="decision-field chose">
+            <span class="label">Chose</span>
+            <p>Widened HITL's action space to three outcomes — escalate / ask the patient one clarifying question / proceed — reading a clarifying-question proposal the Severity-Classifier already computes and was publishing to my agent's inbox unread. The three original floor rules (safety trigger, low confidence, cross-visit recurrence) stay untouched as a hard floor asking can never override.</p>
+          </div>
+          <details class="decision-field tradeoff">
+            <summary class="label">What did this cost me? <span class="reveal-hint">click to reveal</span></summary>
+            <p>The gain threshold that decides whether asking beats escalating (1.0, a triage-workload judgement, not a modelling one) was mine to set with no ground truth to validate it against — I inherited it as an unvalidated number from a teammate's prototype and own defending it. And the widening only closes half the loop: HITL can now decide to ask, but nothing downstream can yet surface the question to a patient or resume the case with an answer — that gap is scoped out in a handoff note for the platform owner. HITL also still classifies as a <code>policy_node</code>, not a genuine agent, under the project's own capability test: the choice between three outcomes is still a threshold on a number a peer computed, not inference I perform.</p>
+          </details>
+
+          <div class="diagram-wrap" style="margin-top:20px;">
+            <svg viewBox="0 0 640 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HITL decision logic: check floor rules, then confidence threshold, then whether a clarifying question clears the gain bar, else escalate.">
+              <defs>
+                <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+                </marker>
+              </defs>
+              <style>
+                .d-title{font-family:var(--font-mono);font-size:12.5px;fill:var(--paper);}
+                .d-cap{font-family:var(--font-mono);font-size:10px;fill:var(--muted);}
+                .d-lbl{font-family:var(--font-mono);font-size:11px;fill:var(--paper-dim);}
+                .d-edge{stroke:var(--muted);stroke-width:1.4;fill:none;}
+                .d-diamond{fill:var(--ink);stroke:var(--line);stroke-width:1.4;}
+                .d-out-escalate{fill:var(--ink);stroke:var(--flag);stroke-width:1.8;rx:6;}
+                .d-out-neutral{fill:var(--ink);stroke:var(--muted);stroke-width:1.4;rx:6;}
+                .d-out-ask{fill:var(--ink);stroke:var(--signal);stroke-width:2;rx:6;}
+              </style>
+
+              <g data-seg="start">
+                <rect x="200" y="8" width="220" height="34" rx="17" fill="var(--ink)" stroke="var(--line)" stroke-width="1.4"/>
+                <text x="310" y="30" text-anchor="middle" class="d-lbl">case reaches HITL</text>
+                <line x1="290" y1="42" x2="290" y2="66" class="d-edge" marker-end="url(#arrow2)"/>
+              </g>
+
+              <g data-seg="d1">
+                <polygon points="290,66 400,136 290,206 180,136" class="d-diamond"/>
+                <text x="290" y="130" text-anchor="middle" class="d-title">Any floor</text>
+                <text x="290" y="147" text-anchor="middle" class="d-title">already fired?</text>
+                <text x="290" y="222" text-anchor="middle" class="d-cap">safety trigger · escalated upstream</text>
+                <text x="290" y="234" text-anchor="middle" class="d-cap">· cross-visit recurrence</text>
+              </g>
+
+              <g data-seg="d1-yes">
+                <line x1="400" y1="136" x2="460" y2="136" class="d-edge" marker-end="url(#arrow2)"/>
+                <text x="410" y="126" class="d-lbl">yes</text>
+              </g>
+              <g data-seg="out-escalate1">
+                <rect x="460" y="106" width="160" height="60" class="d-out-escalate"/>
+                <text x="540" y="132" text-anchor="middle" class="d-title">ESCALATE</text>
+                <text x="540" y="150" text-anchor="middle" class="d-cap">reasons accumulated</text>
+              </g>
+
+              <g data-seg="d1-no">
+                <line x1="290" y1="206" x2="290" y2="256" class="d-edge" marker-end="url(#arrow2)"/>
+                <text x="298" y="236" class="d-lbl">no</text>
+              </g>
+
+              <g data-seg="d2">
+                <polygon points="290,256 400,326 290,396 180,326" class="d-diamond"/>
+                <text x="290" y="320" text-anchor="middle" class="d-title">Confidence &lt;</text>
+                <text x="290" y="337" text-anchor="middle" class="d-title">threshold (0.50)?</text>
+              </g>
+
+              <g data-seg="d2-no">
+                <line x1="400" y1="326" x2="460" y2="326" class="d-edge" marker-end="url(#arrow2)"/>
+                <text x="410" y="316" class="d-lbl">no</text>
+              </g>
+              <g data-seg="out-proceed">
+                <rect x="460" y="296" width="160" height="60" class="d-out-neutral"/>
+                <text x="540" y="322" text-anchor="middle" class="d-title">PROCEED</text>
+                <text x="540" y="340" text-anchor="middle" class="d-cap">no clinician touch</text>
+              </g>
+
+              <g data-seg="d2-yes">
+                <line x1="290" y1="396" x2="290" y2="446" class="d-edge" marker-end="url(#arrow2)"/>
+                <text x="298" y="426" class="d-lbl">yes</text>
+              </g>
+
+              <g data-seg="d3">
+                <polygon points="290,446 400,516 290,586 180,516" class="d-diamond"/>
+                <text x="290" y="504" text-anchor="middle" class="d-title">Proposal clears</text>
+                <text x="290" y="521" text-anchor="middle" class="d-title">gain / acuity /</text>
+                <text x="290" y="538" text-anchor="middle" class="d-title">once-per-round?</text>
+                <text x="290" y="602" text-anchor="middle" class="d-cap">gain ≥ 1.0 · acuity ∉ {P1,P2}</text>
+                <text x="290" y="614" text-anchor="middle" class="d-cap">· not already asked this round</text>
+              </g>
+
+              <g data-seg="d3-yes">
+                <line x1="400" y1="516" x2="460" y2="516" class="d-edge" marker-end="url(#arrow2)"/>
+                <text x="410" y="506" class="d-lbl">yes</text>
+              </g>
+              <g data-seg="out-ask">
+                <rect x="460" y="486" width="160" height="60" class="d-out-ask"/>
+                <text x="540" y="509" text-anchor="middle" class="d-title">ASK ★</text>
+                <text x="540" y="527" text-anchor="middle" class="d-cap">one clarifying question,</text>
+                <text x="540" y="539" text-anchor="middle" class="d-cap">replaces the escalation</text>
+              </g>
+
+              <g data-seg="d3-no">
+                <line x1="290" y1="586" x2="290" y2="636" class="d-edge" marker-end="url(#arrow2)"/>
+                <text x="298" y="616" class="d-lbl">no</text>
+              </g>
+              <g data-seg="out-escalate2">
+                <rect x="180" y="636" width="220" height="56" class="d-out-escalate"/>
+                <text x="290" y="659" text-anchor="middle" class="d-title">ESCALATE</text>
+                <text x="290" y="677" text-anchor="middle" class="d-cap">confidence reason; declined</text>
+                <text x="290" y="689" text-anchor="middle" class="d-cap">proposal recorded, not dropped</text>
+              </g>
+            </svg>
+          </div>
+          <p class="diagram-caption">the run() logic in hitl.py — reasons accumulate, floors are never cleared, asking can only replace a low-confidence escalation</p>
+
+          <div class="sim-panel" id="live-demo">
+            <p class="sim-title">Try it — this reproduces <code>HumanInTheLoopAgent.run()</code> exactly. Change the inputs and watch the path light up.</p>
+            <div class="sim-grid">
+              <label class="sim-toggle"><input type="checkbox" id="sim-safety"> Safety-override triggered</label>
+              <label class="sim-toggle"><input type="checkbox" id="sim-escalated-in"> Already escalated upstream</label>
+              <label class="sim-toggle"><input type="checkbox" id="sim-crossvisit"> Cross-visit recurrence</label>
+
+              <label class="sim-range-row">Confidence
+                <input type="range" id="sim-confidence" min="0" max="1" step="0.01" value="0.43">
+                <span class="sim-val" id="sim-confidence-val">0.43</span>
+              </label>
+
+              <label class="sim-select-row">Acuity code
+                <select id="sim-acuity">
+                  <option value="P1_RESUSCITATION">P1_RESUSCITATION</option>
+                  <option value="P2_EMERGENT">P2_EMERGENT</option>
+                  <option value="P3_URGENT" selected>P3_URGENT</option>
+                  <option value="P4_LESS_URGENT">P4_LESS_URGENT</option>
+                  <option value="P5_NON_URGENT">P5_NON_URGENT</option>
+                </select>
+              </label>
+
+              <label class="sim-toggle"><input type="checkbox" id="sim-proposal" checked> Classifier proposed a clarifying question</label>
+
+              <label class="sim-range-row">Proposal gain
+                <input type="range" id="sim-gain" min="0" max="3" step="0.01" value="2.48">
+                <span class="sim-val" id="sim-gain-val">2.48</span>
+              </label>
+
+              <label class="sim-toggle"><input type="checkbox" id="sim-asked"> Already asked once this round</label>
+            </div>
+
+            <div class="sim-result" id="sim-result">
+              <span class="sim-action" id="sim-action">ASK</span>
+              <span class="sim-reason" id="sim-reason"></span>
+            </div>
+            <p class="diagram-caption" style="margin-top:8px;">default inputs reproduce the exact scenario in <code>docs/vault/HITL Clarification Handshake.md</code> §1 — confidence 0.43 on P3_URGENT with a gain-2.48 proposal</p>
+          </div>
+        </div>
+      </div>
+
+      <script>
+      (function(){
+        const $ = (id) => document.getElementById(id);
+        const els = {
+          safety: $('sim-safety'), escalatedIn: $('sim-escalated-in'), crossVisit: $('sim-crossvisit'),
+          confidence: $('sim-confidence'), confidenceVal: $('sim-confidence-val'),
+          acuity: $('sim-acuity'),
+          proposal: $('sim-proposal'), gain: $('sim-gain'), gainVal: $('sim-gain-val'),
+          asked: $('sim-asked'),
+          action: $('sim-action'), reason: $('sim-reason'),
+        };
+        const NO_ASK_ACUITY = new Set(['P1_RESUSCITATION', 'P2_EMERGENT']);
+        const GAIN_THRESHOLD = 1.0;
+        const CONFIDENCE_THRESHOLD = 0.50;
+        const ALL_SEGS = ['start','d1','d1-yes','out-escalate1','d1-no','d2','d2-no','out-proceed','d2-yes','d3','d3-yes','out-ask','d3-no','out-escalate2'];
+
+        function compute() {
+          const safety = els.safety.checked;
+          const escalatedIn = els.escalatedIn.checked;
+          const crossVisit = els.crossVisit.checked;
+          const confidence = parseFloat(els.confidence.value);
+          const acuity = els.acuity.value;
+          const proposalExists = els.proposal.checked;
+          const gain = parseFloat(els.gain.value);
+          const asked = els.asked.checked;
+
+          const reasons = [];
+          if (escalatedIn) reasons.push('Escalated upstream of Human-in-the-Loop review.');
+          if (safety) reasons.push(`Safety-override triggered rule 'chest_pain'.`);
+          if (crossVisit) reasons.push('Cross-visit recurrence rule triggered.');
+          const floorsTriggered = reasons.length > 0;
+          const lowConfidence = confidence < CONFIDENCE_THRESHOLD;
+          const confidenceReason = `Classifier confidence ${confidence.toFixed(2)} is below the ${CONFIDENCE_THRESHOLD.toFixed(2)} escalation threshold.`;
+
+          let action = 'proceed';
+          let declined = false;
+          const path = ['start', 'd1'];
+
+          if (lowConfidence && floorsTriggered) {
+            reasons.push(confidenceReason);
+            path.push('d1-yes', 'out-escalate1');
+          } else if (floorsTriggered) {
+            path.push('d1-yes', 'out-escalate1');
+          } else {
+            path.push('d1-no', 'd2');
+            if (!lowConfidence) {
+              path.push('d2-no', 'out-proceed');
+            } else {
+              path.push('d2-yes', 'd3');
+              const eligible = proposalExists && gain >= GAIN_THRESHOLD && !NO_ASK_ACUITY.has(acuity) && !asked;
+              if (eligible) {
+                action = 'ask';
+                path.push('d3-yes', 'out-ask');
+              } else {
+                if (proposalExists) declined = true;
+                reasons.push(confidenceReason);
+                path.push('d3-no', 'out-escalate2');
+              }
+            }
+          }
+          if (action !== 'ask') {
+            action = reasons.length > 0 ? 'escalate' : 'proceed';
+          }
+
+          // Paint the diagram: dim everything, then light up the traversed path.
+          const svg = els.action.closest('.decision-card').querySelector('svg');
+          ALL_SEGS.forEach((seg) => {
+            const g = svg.querySelector(`[data-seg="${seg}"]`);
+            if (!g) return;
+            g.classList.toggle('sim-active', path.includes(seg));
+            g.classList.toggle('sim-dim', !path.includes(seg));
+          });
+
+          els.action.textContent = action.toUpperCase();
+          els.action.className = 'sim-action sim-action-' + action;
+          let reasonText = reasons.length ? reasons.join(' ') : 'No floor fired and confidence is adequate — nothing for a clinician to review.';
+          if (declined) reasonText += ' (declined proposal recorded, not dropped)';
+          if (action === 'ask') reasonText = `Proposal clears the bar (gain ${gain.toFixed(2)} ≥ 1.0, acuity ${acuity} not off-limits, not asked yet this round) — asking instead of escalating.`;
+          els.reason.textContent = reasonText;
+
+          els.confidenceVal.textContent = confidence.toFixed(2);
+          els.gainVal.textContent = gain.toFixed(2);
+          els.gain.disabled = !proposalExists;
+          els.asked.disabled = !proposalExists;
+        }
+
+        Object.values(els).forEach((el) => {
+          if (!el || !el.addEventListener) return;
+          el.addEventListener('input', compute);
+          el.addEventListener('change', compute);
+        });
+        compute();
+      })();
+      </script>
+
+      <div class="decision">
+        <div class="decision-card">
+          <h3>Retrieval as a Python branch, not a model-driven tool call</h3>
+          <div class="decision-field context">
+            <span class="label">Context</span>
+            <p>My original design note for the Clinician-Handoff agent called it "ReAct-style: decide what's relevant, optionally retrieve grounding context via RAG, then generate." Once I actually built it, the project's LLM layer (<code>llm.py</code>) turned out to expose only a single-shot <code>complete()</code> across its provider chain (Claude CLI → OpenAI → optional self-hosted Ollama) — there's no function-calling loop for a model to request a retrieval mid-generation the way a true ReAct agent would.</p>
+          </div>
+          <div class="decision-field alternatives">
+            <span class="label">Alternatives considered</span>
+            <p>Building a genuine multi-step tool-calling loop around the provider chain — more faithful to "ReAct" on paper, but would have meant hand-rolling a calling protocol the underlying providers don't uniformly support, for one retrieval decision that has an obvious deterministic answer anyway. The other option was retrieving unconditionally on every escalation for a veneer of "the agent used RAG" — rejected because it grounds cases that have nothing in the rule table to cite, padding the summary with irrelevant citations.</p>
+          </div>
+          <div class="decision-field chose">
+            <span class="label">Chose</span>
+            <p>Made the retrieval decision itself a plain Python branch (<code>_should_ground</code>): ground only when a safety-override rule actually fired, since that's the only case with something concrete in <code>redflags.py</code> to cite. Retrieved citations are then handed to the LLM as fixed context it must stay inside, not as something it can request more of — mirroring the pattern the Severity-Classifier already uses for its own RAG calls.</p>
+          </div>
+          <details class="decision-field tradeoff">
+            <summary class="label">What did this cost me? <span class="reveal-hint">click to reveal</span></summary>
+            <p>I gave up the ability to call this "real" agentic tool use — it's an honest downgrade from the original design note, not the ReAct pattern I'd originally scoped. What it buys back is the safety property that actually matters here: since the model can never request its own retrieval, a prompt injection in the patient's words has no channel to fetch or fabricate grounding it wasn't given — faithfulness stays a property of the Python branch, not of the model's good behaviour.</p>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="outcome">
+    <h2>Outcome &amp; reflection</h2>
+    <p>The escalate/ask/proceed widening shipped fully unit-tested against seven acceptance cases (low-confidence-with-a-good-proposal asks; a safety trigger, P1/P2 acuity, or a repeat clarification all still escalate; a run with no message bus at all is byte-identical to pre-widening behaviour). The handoff agent passed the same bar plus a faithfulness-specific eval (E7) scored against its real LLM path, not just the deterministic fallback. My own escalation policy also earned its keep before either of those: the project's HITL evaluation (E5) initially gated on red-flag recall alone, which I flagged as a weak test — recall is trivially maximised by escalating everything — and pushed for a must-NOT-escalate half with a specificity floor. That gate failed immediately (0.50 against a 0.80 bar) and caught a real blind spot: the severity model had zero features for minor trauma, so a bruise, a cut and a sprain all collapsed to the same confidence score as a genuine unknown and flooded my own gate.</p>
+    <p>Neither agent is wired into the live pipeline yet — by team convention each of the five of us works in isolation on our own agent file and merges independently, so both land as fully-tested code plus a written integration handoff note (the ask/resume API gap for HITL; the six-file diff and ordering constraint — after Reflection, not after HITL — for Clinician-Handoff) rather than a live merge. With more time I'd close that loop myself: wire the patient-facing resume path so a clarifying question can actually reach someone, and read <code>ground_truth.jsonl</code> back into HITL as memory, which is the one upgrade that would make the gate reason from how clinicians have actually ruled on similar cases instead of a fixed threshold — the difference between a policy node and the genuine agent this component is still honestly not.</p>
+  </section>
+
+  <section id="evidence">
+    <h2>Test evidence</h2>
+    <p>Run fresh against this branch — <code>pytest tests/agents/test_hitl.py tests/agents/test_handoff.py</code>, the unit-level contract each agent must satisfy on its own:</p>
+    <div class="terminal">
+      <p class="terminal-label">17 passed in 10.08s</p>
+      <pre>tests/agents/test_hitl.py::test_hitl_emits_review_decision_message <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_escalates_low_confidence <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_escalates_when_safety_triggered <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_does_not_escalate_a_confident_safe_case <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_asks_when_a_proposal_clears_the_gain_threshold <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_ignores_the_proposal_when_safety_triggered <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_escalates_outright_at_p1_or_p2_even_with_a_good_proposal <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_never_asks_twice_in_the_same_round <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_escalates_and_records_the_decline_below_gain_threshold <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_escalates_unchanged_when_classifier_declines_to_propose <span class="pass">PASSED</span>
+tests/agents/test_hitl.py::test_hitl_behaviour_is_unchanged_with_no_bus_at_all <span class="pass">PASSED</span>
+tests/agents/test_handoff.py::test_handoff_is_a_noop_when_not_escalated <span class="pass">PASSED</span>
+tests/agents/test_handoff.py::test_handoff_produces_a_summary_when_escalated <span class="pass">PASSED</span>
+tests/agents/test_handoff.py::test_handoff_grounds_only_when_a_safety_rule_fired <span class="pass">PASSED</span>
+tests/agents/test_handoff.py::test_handoff_summary_never_exceeds_the_length_cap <span class="pass">PASSED</span>
+tests/agents/test_handoff.py::test_handoff_emits_handoff_ready_message <span class="pass">PASSED</span>
+tests/agents/test_handoff.py::test_handoff_never_writes_outside_its_lane <span class="pass">PASSED</span></pre>
+    </div>
+
+    <p>The evaluation layer is a different bar — it drives the <em>real</em> pipeline end to end (<code>_triage_event_stream</code>, LLM disabled so the deterministic path is what's scored) against a hand-labelled fixture, not a mocked agent in isolation:</p>
+    <div class="terminal">
+      <p class="terminal-label">E5 (HITL trigger accuracy) + E7 (handoff faithfulness) — 11 passed in 337.6s</p>
+      <pre>tests/test_eval_hitl.py::test_dataset_covers_both_classes <span class="pass">PASSED</span>
+tests/test_eval_hitl.py::test_recall_on_must_escalate_is_perfect <span class="pass">PASSED</span>
+tests/test_eval_hitl.py::test_specificity_on_must_not_escalate <span class="pass">PASSED</span>
+tests/test_eval_hitl.py::test_every_escalation_is_attributable <span class="pass">PASSED</span>
+tests/test_eval_hitl.py::test_spec_and_implementation_agree <span class="pass">PASSED</span>
+tests/test_eval_handoff.py::test_dataset_is_nonempty <span class="pass">PASSED</span>
+tests/test_eval_handoff.py::test_no_hallucinated_facts <span class="pass">PASSED</span>
+tests/test_eval_handoff.py::test_required_facts_survive_into_the_summary <span class="pass">PASSED</span>
+tests/test_eval_handoff.py::test_every_citation_came_from_the_retrieval_corpus <span class="pass">PASSED</span>
+tests/test_eval_handoff.py::test_grounding_is_gated_on_a_fired_safety_rule <span class="pass">PASSED</span>
+tests/test_eval_handoff.py::test_spec_defines_all_four_mandatory_things <span class="pass">PASSED</span>
+
+<span class="dim">HITL fixture: 12 cases (6 must-escalate / 6 must-not-escalate)
+  recall      = 1.000  (gate: == 1.000 — zero missed red flags)
+  specificity = 1.000  (gate: >= 0.800 — zero false-positive escalations)</span></pre>
+    </div>
+    <p>The 0.800 specificity gate is deliberately non-trivial — it's the same bar that failed at 0.500 on its first-ever run and surfaced the minor-trauma blind spot described above. It passing at 1.000 today reflects the fixed feature space, not a loosened bar.</p>
+  </section>
+
+  <section id="stack">
+    <h2>Stack</h2>
+    <div class="tags">
+      <span class="tag">Multi-agent systems</span>
+      <span class="tag">Agent-to-agent message bus</span>
+      <span class="tag">FastAPI + SSE</span>
+      <span class="tag">Claude CLI / OpenAI provider chain</span>
+      <span class="tag">Optional self-hosted Ollama</span>
+      <span class="tag">RAG grounding</span>
+      <span class="tag">Deterministic fallback design</span>
+      <span class="tag">pytest eval harness</span>
+    </div>
+  </section>
+
+  <footer>
+    <span>CareRoute AI — Case Study</span>
+    <span>Repo / demo available on request</span>
+  </footer>
+</div>
+
+</body>
+</html>

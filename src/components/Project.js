@@ -8,13 +8,15 @@ class Project extends Component {
             { title: "FLOAT", subtitle: "REACT NATIVE DEVELOPMENT", id: 1 },
             { title: "MASHU", subtitle: "MARKETING & WEB DEVELOPMENT", id: 2 },
             { title: "SURVEY ", subtitle: "MOBILE DEVELOPMENT", id: 3 },
-            { title: "MEETINGNOTES", subtitle: "PYTHON / DISCORD AUTOMATION", id: 4 }
+            { title: "MEETINGNOTES", subtitle: "PYTHON / DISCORD AUTOMATION", id: 4 },
+            { title: "CAREROUTE AI", subtitle: "MULTI-AGENT HEALTHCARE TRIAGE SYSTEM", id: 5 }
         ],
         links: {
             1: 'https://github.com/ljunqian/Float',
             2: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
             3: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
             4: '/case-studies/meetingnotes.html',
+            5: '/case-studies/careroute-ai.html',
         },
         default: {
             title: 'PROJECT',
