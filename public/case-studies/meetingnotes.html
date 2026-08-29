@@ -395,6 +395,17 @@
   .cta-btn:not(.primary):hover{ border-color:var(--signal); color:var(--signal); }
   .cta-btn.primary:hover{ opacity:.88; }
   @media (prefers-reduced-motion: reduce){ .cta-btn{ transition:none; } }
+
+  /* ================= back link ================= */
+  .hero-back{
+    display:inline-flex; align-items:center; gap:.4rem;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:.78rem; letter-spacing:.02em;
+    color:#9fb0a5; text-decoration:none;
+    margin-bottom:1.8rem;
+  }
+  .hero-back:hover, .hero-back:focus-visible{ color:var(--signal); }
+  .hero-back:focus-visible{ outline:2px solid var(--signal); outline-offset:3px; }
 </style>
 
 <div id="progress"></div>
@@ -402,6 +413,7 @@
 <!-- ================= HERO ================= -->
 <div class="hero">
   <div class="hero-inner">
+    <a class="hero-back" href="../index.html">&larr; back to portfolio</a>
     <span class="eyebrow">MeetingNotes — Engineering Case Study</span>
     <h1>Turning meeting <em>noise</em><br>into structured <em>signal</em>.</h1>
     <p class="dek">A solo, three-day build of a Discord meeting-notes pipeline —
