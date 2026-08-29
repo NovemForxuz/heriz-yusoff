@@ -12,16 +12,9 @@ const About = () => {
     const myQuote = "I'm Heriz. A frontend engineer, builder and problem solver."
 
     const pdfViewer = (
-        <object
-            data="https://example.com/test.pdf#page=2"
-            type="application/pdf"
-            width="100%"
-            height="100%"
-        >
-            <a href={resume} target="_blank" rel="noopener noreferrer">
-                <button>My CV</button>
-            </a>
-        </object>
+        <a href={resume} target="_blank" rel="noopener noreferrer">
+            <button>My CV</button>
+        </a>
     )
 
     return (
@@ -90,7 +83,7 @@ const About = () => {
                         <span className='header'>Skills</span>
                         <br /><br />
 
-                        React / JavaScript (ES6+) / TypeScript / HTML & CSS / Responsive Design / Fullstack Development / REST APIs / MongoDB / MySQL / Git / Agile Methodologies / CI/CD / Collaboration / Problem Solving
+                        React / JavaScript (ES6+) / TypeScript / C# / HTML & CSS / Fullstack Development / REST APIs / MongoDB / MySQL / Git / Agile Methodologies / CI/CD / Collaboration / Problem Solving
                         <br /><br />
 
                         <span className='header'>Currently Interested In</span>
