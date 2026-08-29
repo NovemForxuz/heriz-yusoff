@@ -352,6 +352,16 @@ button:hover {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .header.header-small {
+    position: static;
+    display: block;
+    width: auto;
+    margin-top: 0.5vh;
+    margin-bottom: 0;
+  }
+}
+
 .project .nav-link {
   font-size: clamp(30px,8vw,85px);
   color: #fff7ed;
@@ -359,6 +369,13 @@ button:hover {
   padding-bottom: 3vh;
   margin-top: 1vh;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .project .nav-link {
+    padding-bottom: 0.5vh;
+    margin-top: 4vh;
+  }
 }
 
 @media screen and (min-width:768px) {
