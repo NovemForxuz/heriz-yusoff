@@ -61,9 +61,18 @@ class Project extends Component {
         const projectList = projects.length ? (
             projects.map(project => {
                 const idName = 'prj' + project.id
+                const href = links[project.id]
+                const isExternal = /^https?:\/\//.test(href)
                 return (
                     <div key={project.id} id={idName} className="relative block pr-[5%] text-right">
-                        <h2 className='nav-link'><a href={links[project.id]} target='_blank' rel="noreferrer">{project.title}</a></h2>
+                        <h2 className='nav-link'>
+                            <a
+                                href={href}
+                                {...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+                            >
+                                {project.title}
+                            </a>
+                        </h2>
                         <h4 className='header header-small'>- {project.subtitle}</h4>
                     </div>
                 )
