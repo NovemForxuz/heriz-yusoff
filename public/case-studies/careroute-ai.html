@@ -357,8 +357,9 @@
     grid-column: span 2;
   }
   .sim-range-row { flex-direction: row; align-items: center; gap: 10px; }
-  .sim-range-row input[type="range"] { accent-color: var(--signal); flex: 1; }
-  .sim-val { color: var(--paper); min-width: 3.2em; text-align: right; }
+  .sim-range-track { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+  .sim-range-row input[type="range"] { accent-color: var(--signal); flex: 1; min-width: 0; }
+  .sim-val { color: var(--paper); min-width: 3.2em; text-align: right; flex-shrink: 0; }
   .sim-select-row select {
     background: var(--ink);
     color: var(--paper);
@@ -397,6 +398,8 @@
   @media (max-width: 560px) {
     .sim-grid { grid-template-columns: 1fr; }
     .sim-range-row, .sim-select-row { grid-column: span 1; }
+    .sim-range-row { flex-direction: column; align-items: stretch; gap: 6px; }
+    .sim-range-track { width: 100%; }
   }
 
   /* ---------- Test evidence ---------- */
@@ -737,8 +740,10 @@
               <label class="sim-toggle"><input type="checkbox" id="sim-crossvisit"> Cross-visit recurrence</label>
 
               <label class="sim-range-row">Confidence
-                <input type="range" id="sim-confidence" min="0" max="1" step="0.01" value="0.43">
-                <span class="sim-val" id="sim-confidence-val">0.43</span>
+                <span class="sim-range-track">
+                  <input type="range" id="sim-confidence" min="0" max="1" step="0.01" value="0.43">
+                  <span class="sim-val" id="sim-confidence-val">0.43</span>
+                </span>
               </label>
 
               <label class="sim-select-row">Acuity code
@@ -754,8 +759,10 @@
               <label class="sim-toggle"><input type="checkbox" id="sim-proposal" checked> Classifier proposed a clarifying question</label>
 
               <label class="sim-range-row">Proposal gain
-                <input type="range" id="sim-gain" min="0" max="3" step="0.01" value="2.48">
-                <span class="sim-val" id="sim-gain-val">2.48</span>
+                <span class="sim-range-track">
+                  <input type="range" id="sim-gain" min="0" max="3" step="0.01" value="2.48">
+                  <span class="sim-val" id="sim-gain-val">2.48</span>
+                </span>
               </label>
 
               <label class="sim-toggle"><input type="checkbox" id="sim-asked"> Already asked once this round</label>
