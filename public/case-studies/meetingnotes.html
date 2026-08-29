@@ -342,8 +342,12 @@
     border-radius:8px;
     padding:1.3rem 1.2rem 1rem;
     box-shadow:var(--shadow);
+    overflow-x:auto;
   }
   figure.diagram svg{ width:100%; height:auto; display:block; color:var(--ink-soft); }
+  @media (max-width:700px){
+    figure.diagram svg{ width:900px; max-width:none; }
+  }
   figure.diagram .sig{ color:var(--signal); }
   figure.diagram .noi{ color:var(--noise); }
   figcaption{
