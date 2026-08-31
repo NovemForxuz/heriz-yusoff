@@ -13,7 +13,7 @@ class Project extends Component {
         ],
         links: {
             1: 'https://github.com/ljunqian/Float',
-            2: 'https://github.com/NovemForxuz/aesthetic-clinic-cs2024',
+            2: '/case-studies/mashu-aesthetics.html',
             3: 'https://github.com/NovemForxuz/IM2073-SimpleSurvey',
             4: '/case-studies/meetingnotes.html',
             5: '/case-studies/careroute-ai.html',
