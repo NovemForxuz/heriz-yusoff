@@ -441,7 +441,10 @@
     flex:none; width:1.6rem; height:1.6rem; border-radius:3px; background:var(--signal-bg);
     color:var(--signal); font-size:.62rem; font-weight:700; display:flex; align-items:center; justify-content:center;
   }
-  .discord-mock .filecard .fname{ font-size:.82rem; color:var(--ink); }
+  .discord-mock .filecard .fname{
+    font-size:.82rem; color:var(--ink); min-width:0;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
   .discord-mock .filecard .fsize{ font-size:.7rem; color:var(--ink-faint); margin-left:auto; }
 
   /* ================= payoff: real input/output ================= */
