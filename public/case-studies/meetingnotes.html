@@ -416,6 +416,26 @@
   }
   .diagram-lightbox-close:focus-visible{ outline:2px solid var(--signal); outline-offset:2px; }
 
+  /* ================= back to top ================= */
+  .back-to-top{
+    position:fixed; right:1.1rem; bottom:1.1rem; z-index:150;
+    width:2.75rem; height:2.75rem; border-radius:50%;
+    border:1px solid var(--line-soft);
+    background:var(--bg-panel); color:var(--ink);
+    box-shadow:var(--shadow);
+    font-size:1.3rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; visibility:hidden; transform:translateY(8px);
+    transition:opacity .2s ease, transform .2s ease, visibility 0s .2s, border-color .2s ease, color .2s ease;
+  }
+  .back-to-top.show{
+    opacity:1; visibility:visible; transform:none;
+    transition:opacity .2s ease, transform .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .back-to-top:hover{ color:var(--signal); border-color:var(--signal); }
+  .back-to-top:focus-visible{ outline:2px solid var(--signal); outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce){ .back-to-top{ transition:opacity .01s, visibility .01s; } }
+
   /* ================= pattern cards ================= */
   .pattern-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:1.6rem; }
   .pattern-card{ background:var(--bg-panel); padding:1.4rem 1.3rem; }
@@ -1375,6 +1395,8 @@
   MeetingNotes — case study compiled 1 Sep 2026 · source: repo README + commit history, c6619b3 → 653e058
 </footer>
 
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
 <script>
 (function(){
   // hero waveform bars
@@ -1389,11 +1411,18 @@
 
   // scroll progress
   var bar = document.getElementById('progress');
+  var backToTop = document.getElementById('back-to-top');
   function onScroll(){
-    var h = document.documentElement;
-    var scrolled = h.scrollTop;
-    var max = h.scrollHeight - h.clientHeight;
+    // this page has no <!DOCTYPE>, which renders it in quirks mode — there,
+    // the scrolling element is document.body, not document.documentElement,
+    // so read whichever one actually has a nonzero scrollTop
+    var de = document.documentElement, b = document.body;
+    var scrolled = de.scrollTop || b.scrollTop;
+    var max = Math.max(de.scrollHeight, b.scrollHeight) - window.innerHeight;
     bar.style.width = (max > 0 ? (scrolled/max*100) : 0) + '%';
+    // show once scrolled all the way to the bottom (small tolerance for
+    // fractional pixels / mobile overscroll bounce)
+    if (backToTop) backToTop.classList.toggle('show', max > 0 && (max - scrolled) <= 4);
   }
   document.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
@@ -1410,6 +1439,13 @@
       });
     }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
     targets.forEach(function(t){ io.observe(t); });
+  }
+
+  // back to top
+  if (backToTop){
+    backToTop.addEventListener('click', function(){
+      window.scrollTo({ top:0, behavior: reduced ? 'auto' : 'smooth' });
+    });
   }
 
   // stat count-up
